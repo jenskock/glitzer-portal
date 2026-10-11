@@ -3,6 +3,7 @@ export const band1 = {
   title: 'Das Rätsel des leuchtenden Steins',
   series: 'Das Glitzer-Portal',
   coverColor: '#4ECDC4',
+  coverImage: 'images/band1/s01.webp',
   
   pages: [
     // Cover

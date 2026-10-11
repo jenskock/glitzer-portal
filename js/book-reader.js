@@ -1,9 +1,11 @@
 import { renderPage } from './page-renderer.js';
+import { loadReadingProgress, markPageRead, saveReadingProgress } from './reading-progress.js';
 
 export class BookReader {
   constructor(book) {
     this.book = book;
-    this.currentSpreadIndex = 0;
+    this.progress = loadReadingProgress(book.id, book.pages.length);
+    this.currentSpreadIndex = this.progress.page;
     this.touchStartX = 0;
     this.touchStartY = 0;
     
@@ -17,14 +19,21 @@ export class BookReader {
   }
 
   setupEventListeners() {
-    this.prevButton.addEventListener('click', () => this.previousSpread());
-    this.nextButton.addEventListener('click', () => this.nextSpread());
+    this.onPrevClick = () => this.previousSpread();
+    this.onNextClick = () => this.nextSpread();
+    this.onTouchStart = (e) => this.handleTouchStart(e);
+    this.onTouchEnd = (e) => this.handleTouchEnd(e);
+    this.onMouseDown = (e) => this.handleMouseDown(e);
+    this.onMouseUp = (e) => this.handleMouseUp(e);
+
+    this.prevButton.addEventListener('click', this.onPrevClick);
+    this.nextButton.addEventListener('click', this.onNextClick);
     
-    this.bookSpread.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
-    this.bookSpread.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
+    this.bookSpread.addEventListener('touchstart', this.onTouchStart, { passive: true });
+    this.bookSpread.addEventListener('touchend', this.onTouchEnd, { passive: true });
     
-    this.bookSpread.addEventListener('mousedown', (e) => this.handleMouseDown(e));
-    this.bookSpread.addEventListener('mouseup', (e) => this.handleMouseUp(e));
+    this.bookSpread.addEventListener('mousedown', this.onMouseDown);
+    this.bookSpread.addEventListener('mouseup', this.onMouseUp);
   }
 
   handleTouchStart(e) {
@@ -76,25 +85,19 @@ export class BookReader {
   }
 
   start() {
-    const saved = this.getSavedPage();
-    this.currentSpreadIndex = saved !== null ? saved : 0;
+    this.currentSpreadIndex = this.progress.page;
     this.renderCurrentSpread();
   }
 
-  getSavedPage() {
-    const saved = localStorage.getItem(`glitzer-portal-${this.book.id}-page`);
-    return saved !== null ? parseInt(saved, 10) : null;
-  }
-
-  savePage() {
-    localStorage.setItem(`glitzer-portal-${this.book.id}-page`, this.currentSpreadIndex);
+  rememberPage() {
+    this.progress = markPageRead(this.progress, this.currentSpreadIndex, this.book.pages.length);
+    saveReadingProgress(this.book.id, this.progress);
   }
 
   nextSpread() {
     if (this.currentSpreadIndex < this.book.pages.length - 1) {
       this.currentSpreadIndex++;
       this.renderCurrentSpread();
-      this.savePage();
     }
   }
 
@@ -102,21 +105,25 @@ export class BookReader {
     if (this.currentSpreadIndex > 0) {
       this.currentSpreadIndex--;
       this.renderCurrentSpread();
-      this.savePage();
     }
   }
 
   renderCurrentSpread() {
     const currentPage = this.book.pages[this.currentSpreadIndex];
+    this.rememberPage();
     
+    this.bookSpread.classList.remove('book-spread--puzzle');
+    this.bookSpread.querySelector('.puzzle-spread-wrapper')?.remove();
+
     this.leftPageEl.innerHTML = '';
     this.rightPageEl.innerHTML = '';
     this.rightPageEl.style.opacity = '1';
     
+    this.bookSpread.classList.toggle('is-cover', currentPage?.type === 'cover');
+
     if (!currentPage) return;
     
     if (currentPage.type === 'cover') {
-      // Cover spans both pages
       renderPage(currentPage, this.leftPageEl, this.book, 'left');
       this.rightPageEl.style.opacity = '0';
     } else if (currentPage.type === 'story') {
@@ -124,7 +131,8 @@ export class BookReader {
       renderPage(currentPage, this.leftPageEl, this.book, 'left');
       renderPage(currentPage, this.rightPageEl, this.book, 'right');
     } else if (currentPage.type === 'puzzle') {
-      // Puzzle spreads use both pages
+      // Puzzle spreads use both pages as one playfield
+      this.bookSpread.classList.add('book-spread--puzzle');
       renderPage(currentPage, this.leftPageEl, this.book, 'left', this.rightPageEl);
       this.rightPageEl.style.opacity = '1';
     }
@@ -138,6 +146,11 @@ export class BookReader {
   }
 
   cleanup() {
-    // Clean up any running puzzles or timers
+    this.prevButton.removeEventListener('click', this.onPrevClick);
+    this.nextButton.removeEventListener('click', this.onNextClick);
+    this.bookSpread.removeEventListener('touchstart', this.onTouchStart);
+    this.bookSpread.removeEventListener('touchend', this.onTouchEnd);
+    this.bookSpread.removeEventListener('mousedown', this.onMouseDown);
+    this.bookSpread.removeEventListener('mouseup', this.onMouseUp);
   }
 }

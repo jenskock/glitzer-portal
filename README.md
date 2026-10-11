@@ -1,116 +1,43 @@
 # Das Glitzer-Portal
 
-Interactive children's book web app for the series "Das Glitzer-Portal".
+Interactive children's book for readers aged 6–7. Band 1, *Das Rätsel des leuchtenden Steins*, is ten story spreads and ten touch puzzles. Reading progress is stored in the browser.
 
-## 🌟 Live Demo
+Live: https://jenskock.github.io/glitzer-portal/
 
-Visit: **https://jenskock.github.io/glitzer-portal/**
+## Run locally
 
-## 📚 About
-
-"Das Glitzer-Portal" is an interactive children's book series for readers aged 6-7 who are learning to read. Each volume combines storytelling with educational puzzles.
-
-**Band 1: Das Rätsel des leuchtenden Steins**
-- 10 story double spreads
-- 10 interactive puzzles
-- Colorful comic-style illustrations
-- Large, readable fonts (Andika & Baloo2)
-
-## 🎮 Features
-
-- **Interactive Reading**: Swipe or tap to turn pages
-- **Touch-Friendly Puzzles**: All 10 puzzles work by touch
-- **Progress Memory**: Automatically remembers where you left off
-- **iPad Optimized**: Best viewed on iPad in landscape mode
-- **No Installation**: Works directly in the browser
-
-## 🧩 Puzzles in Band 1
-
-1. Suchbild (Hidden Objects)
-2. Fehlerbild (Spot the Differences)
-3. Anlaut B (Initial Sounds)
-4. Steckbrief Capybara (Animal Facts)
-5. Labyrinth (Maze)
-6. Quiz
-7. Memory
-8. Ausmalbild (Coloring)
-9. Wort-zu-Bild (Word Matching)
-10. Steckbrief Axolotl (Animal Facts)
-
-## 🛠️ Development
-
-### Prerequisites
-- Node.js 18+
-- Python 3 (for local server)
-
-### Setup
 ```bash
 npm install
+npm run dev
 ```
 
-### Run locally
-```bash
-python3 -m http.server 8000
-# Open http://localhost:8000
-```
+Open http://localhost:8000. HTML, CSS, and JS changes reload in the browser.
 
-### Run tests
-```bash
-npm test
-```
-
-## 📁 Project Structure
+## Layout
 
 ```
-/
-├── index.html              # Main entry point
-├── styles/                 # CSS files
-├── js/                     # JavaScript modules
-│   ├── main.js            # App initialization
-│   ├── bookshelf.js       # Bookshelf renderer
-│   ├── book-reader.js     # Page navigation
-│   ├── pages/             # Page renderers
-│   ├── puzzles/           # Puzzle implementations
-│   └── scenes/            # SVG scene compositions
-├── books/                  # Book data
-│   └── band1.js           # Band 1 content
-├── assets/
-│   ├── characters/        # SVG character graphics
-│   └── fonts/             # Andika & Baloo2 fonts
-└── tests/                  # Playwright tests
+index.html          entry page
+js/                 bookshelf, reader, page and puzzle modules
+books/band1.js      Band 1 text and puzzle data
+images/band1/       story and puzzle art
+assets/fonts/       Andika and Source Sans 3
+assets/characters/  praise portraits
+styles/             layout and puzzle styles
+illustration/       style prompt, reference image, character lineup
+glitzer-assets-band1/  Band 1 manuscript, prompts, and source art
+bruno-lotti/        character art and manuscript
 ```
 
-## 🎨 Illustration Style Guide
+To add another volume, create `books/bandN.js` in the same shape as `books/band1.js` and add it to the books array in `js/main.js`. The style prompt and character lineup in `illustration/` are the reference for new art.
 
-All book illustrations follow a consistent comic-style aesthetic:
+## Characters
 
-- **Style Prompt**: See [`illustration/style-prompt.md`](illustration/style-prompt.md)
-- **Reference Image**: [`illustration/stil-referenz-ds1.jpg`](illustration/stil-referenz-ds1.jpg)
-- **Character Lineup**: [`illustration/characters/lineup.png`](illustration/characters/lineup.png)
-
-For technical details on the image-based architecture and hotspot data format, see [`REFACTORING_SUMMARY.md`](REFACTORING_SUMMARY.md).
-
-## 🎨 Adding New Volumes
-
-To add Band 2, Band 3, etc.:
-
-1. Create `books/band2.js` with the same structure as `band1.js`
-2. Import and add to the books array in `js/main.js`
-3. Add any new character SVGs to `assets/characters/`
-4. Generate illustrations following the style guide
-
-No code changes needed - the bookshelf is data-driven!
-
-## 📝 License
+- Lotti — pink axolotl
+- Bruno — capybara
+- Paula — girl from the rainforest
+- Tuko — toucan
+- Momo — sloth
+- Fips — hummingbird
+- Rudi — raccoon
 
 All content © Jens Kock
-
-## 🐾 Characters
-
-- **Lotti** - Pink axolotl from Mexico
-- **Bruno** - Capybara from South America
-- **Paula** - Girl from the rainforest
-- **Tuko** - Toucan
-- **Momo** - Sloth
-- **Fips** - Hummingbird
-- **Rudi** - Raccoon

@@ -36,11 +36,10 @@ export class FactCardsPuzzle {
     const grid = document.createElement('div');
     grid.className = 'fact-cards-grid';
     grid.style.display = 'grid';
-    grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
-    grid.style.gap = '20px';
-    grid.style.padding = '40px';
-    grid.style.maxWidth = '1000px';
-    grid.style.margin = 'auto';
+    grid.style.gap = '1rem';
+    grid.style.width = '100%';
+    grid.style.flex = '1';
+    grid.style.minHeight = '0';
     grid.style.position = 'relative';
     grid.style.zIndex = '1';
     
@@ -70,7 +69,7 @@ export class FactCardsPuzzle {
       
       const numberDiv = document.createElement('div');
       numberDiv.textContent = (index + 1).toString();
-      numberDiv.style.fontFamily = 'Baloo2, cursive';
+      numberDiv.style.fontFamily = 'Source Sans 3, sans-serif';
       numberDiv.style.fontSize = '3rem';
       numberDiv.style.fontWeight = 'bold';
       numberDiv.style.color = '#4ECDC4';
@@ -111,12 +110,12 @@ export class FactCardsPuzzle {
     quiz.style.padding = '30px';
     quiz.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)';
     quiz.style.zIndex = '10';
-    quiz.style.maxWidth = '600px';
+    quiz.style.width = 'min(100%, 720px)';
     
     const question = document.createElement('div');
     question.className = 'fact-quiz-question';
     question.textContent = this.data.quiz.question;
-    question.style.fontFamily = 'Baloo2, cursive';
+    question.style.fontFamily = 'Source Sans 3, sans-serif';
     question.style.fontSize = '1.5rem';
     question.style.marginBottom = '20px';
     question.style.textAlign = 'center';

@@ -1,3 +1,5 @@
+import { bindArtRatio } from './art-frame.js';
+
 export class DifferencesPuzzle {
   constructor(data, container) {
     this.data = data;
@@ -15,46 +17,43 @@ export class DifferencesPuzzle {
     
     const leftImg = document.createElement('div');
     leftImg.className = 'diff-image';
-    leftImg.style.position = 'relative';
+
+    const leftFrame = document.createElement('div');
+    leftFrame.className = 'art-frame';
     
     const leftImgEl = document.createElement('img');
     leftImgEl.src = this.data.imageLeft;
     leftImgEl.alt = 'Bild links';
-    leftImgEl.style.width = '100%';
-    leftImgEl.style.height = '100%';
-    leftImgEl.style.objectFit = 'contain';
-    leftImgEl.style.borderRadius = '15px';
-    leftImgEl.style.pointerEvents = 'none';
-    leftImg.appendChild(leftImgEl);
+    leftFrame.appendChild(leftImgEl);
+    bindArtRatio(leftFrame, leftImgEl);
+    leftImg.appendChild(leftFrame);
     
     const rightImg = document.createElement('div');
     rightImg.className = 'diff-image';
-    rightImg.style.position = 'relative';
+
+    const rightFrame = document.createElement('div');
+    rightFrame.className = 'art-frame';
     
     const rightImgEl = document.createElement('img');
     rightImgEl.src = this.data.imageRight;
     rightImgEl.alt = 'Bild rechts';
-    rightImgEl.style.width = '100%';
-    rightImgEl.style.height = '100%';
-    rightImgEl.style.objectFit = 'contain';
-    rightImgEl.style.borderRadius = '15px';
-    rightImgEl.style.pointerEvents = 'none';
-    rightImg.appendChild(rightImgEl);
+    rightFrame.appendChild(rightImgEl);
+    bindArtRatio(rightFrame, rightImgEl);
+    rightImg.appendChild(rightFrame);
     
     this.data.hotspots.forEach(diff => {
       const spot = document.createElement('div');
       spot.className = 'difference-spot';
+      const radius = diff.r ?? diff.radius;
       spot.style.position = 'absolute';
       spot.style.left = `${diff.x}%`;
       spot.style.top = `${diff.y}%`;
-      spot.style.width = `${diff.radius * 2}%`;
-      spot.style.height = `${diff.radius * 2}%`;
+      spot.style.width = `${radius * 2}%`;
+      spot.style.aspectRatio = '1';
+      spot.style.height = 'auto';
       spot.style.transform = 'translate(-50%, -50%)';
       spot.style.borderRadius = '50%';
       spot.style.cursor = 'pointer';
-      spot.style.border = '2px dashed rgba(255, 255, 255, 0.5)';
-      spot.style.background = 'rgba(255, 255, 255, 0.1)';
-      spot.style.transition = 'all 0.2s ease';
       spot.style.zIndex = '20';
       spot.style.pointerEvents = 'auto';
       spot.setAttribute('data-diff-id', diff.id);
@@ -63,8 +62,6 @@ export class DifferencesPuzzle {
         if (!this.found.has(diff.id)) {
           this.found.add(diff.id);
           spot.classList.add('found');
-          spot.style.border = '3px solid #FF6B9D';
-          spot.style.background = 'rgba(255, 107, 157, 0.6)';
           
           if (this.found.size === this.data.hotspots.length) {
             setTimeout(() => {
@@ -74,7 +71,7 @@ export class DifferencesPuzzle {
         }
       });
       
-      rightImg.appendChild(spot);
+      rightFrame.appendChild(spot);
     });
     
     puzzleDiv.appendChild(leftImg);
