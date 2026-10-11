@@ -19,10 +19,10 @@ export const band1 = {
       spread: 1,
       spreadImage: 'images/band1/s01.webp',
       left: {
-        text: "Das ist Lotti, das Axolotl. Sie lebt in einem See in Mexiko. Dort fahren bunte Boote mit bemalten Bögen. Dazwischen schwimmen kleine Gärten mit Blumen und Gemüse. Die Sonne glitzert auf dem Wasser, und es duftet nach Blüten. \\Guten Morgen!\", ruft Lotti einem Boot zu. Ihre pinken Kiemen wackeln vor Freude."
+        text: „Das ist Lotti, das Axolotl. Sie lebt in einem See in Mexiko. Dort fahren bunte Boote mit bemalten Bögen. Dazwischen schwimmen kleine Gärten mit Blumen und Gemüse. Die Sonne glitzert auf dem Wasser, und es duftet nach Blüten. „Guten Morgen!", ruft Lotti einem Boot zu. Ihre pinken Kiemen wackeln vor Freude."
       },
       right: {
-        text: "Lotti tüftelt gern. Heute baut sie eine kleine Wassermühle. Neben ihr liegt ihr türkiser Rucksack. Daraus kommt immer das richtige Ding. Lotti sagt nur: \\Moment, ich hab da was!\" Und schon greift sie hinein. Im Schilf raschelt es leise. Aber Lotti merkt nichts."
+        text: "Lotti tüftelt gern. Heute baut sie eine kleine Wassermühle. Neben ihr liegt ihr türkiser Rucksack. Daraus kommt immer das richtige Ding. Lotti sagt nur: „Moment, ich hab da was!" Und schon greift sie hinein. Im Schilf raschelt es leise. Aber Lotti merkt nichts."
       }
     },
     
@@ -50,10 +50,10 @@ export const band1 = {
       spread: 2,
       spreadImage: 'images/band1/s02.webp',
       left: {
-        text: "Plötzlich glitzert es im Wasser. Ein Strudel dreht sich, erst langsam, dann immer schneller. Rundherum liegen alte Steine mit türkisen Punkten. \\Was ist das denn?\", flüstert Lotti. Sie staunt mit offenem Mund. Da kommt Rudi, der Waschbär, aus dem Schilf. Er hat eine schwarze Maske und einen geringelten Schwanz."
+        text: „Plötzlich glitzert es im Wasser. Ein Strudel dreht sich, erst langsam, dann immer schneller. Rundherum liegen alte Steine mit türkisen Punkten. \\Was ist das denn?", flüstert Lotti. Sie staunt mit offenem Mund. Da kommt Rudi, der Waschbär, aus dem Schilf. Er hat eine schwarze Maske und einen geringelten Schwanz."
       },
       right: {
-        text: "Er schnappt den Rucksack. \\Hihi, das gehört jetzt mir!\", kichert er. \\He, gib den sofort zurück!\", ruft Lotti. Doch Rudi grinst nur frech und nimmt Anlauf. Platsch! Rudi springt in den Strudel. Weg ist er, und der Rucksack auch. Nur ein paar Blasen steigen noch auf."
+        text: „Er schnappt den Rucksack. \\Hihi, das gehört jetzt mir!„, kichert er. \\He, gib den sofort zurück!", ruft Lotti. Doch Rudi grinst nur frech und nimmt Anlauf. Platsch! Rudi springt in den Strudel. Weg ist er, und der Rucksack auch. Nur ein paar Blasen steigen noch auf."
       }
     },
     
@@ -81,7 +81,7 @@ export const band1 = {
       spread: 3,
       spreadImage: 'images/band1/s03.webp',
       left: {
-        text: "Lotti schwimmt bis an den Rand des Strudels. Ihr Herz klopft ganz laut. Lotti hat ein bisschen Angst. Aber ohne ihren Rucksack will sie nicht nach Hause. \\Ich gebe nicht auf\", sagt sie leise. Sie holt tief Luft. Lotti ist mutig. Sie schwimmt in den Strudel."
+        text: "Lotti schwimmt bis an den Rand des Strudels. Ihr Herz klopft ganz laut. Lotti hat ein bisschen Angst. Aber ohne ihren Rucksack will sie nicht nach Hause. \\Ich gebe nicht auf", sagt sie leise. Sie holt tief Luft. Lotti ist mutig. Sie schwimmt in den Strudel."
       },
       right: {
         text: "Wusch! Alles dreht sich. Wasser, Glitzer und Blasen wirbeln herum. Oben ist unten, und unten ist oben. Dann taucht Lotti auf. Sie schwimmt in einem breiten, braunen Fluss. Riesige Bäume stehen am Ufer, und Lianen hängen bis ins Wasser. Es ist warm, und bunte Vögel rufen laut. Jetzt ist Lotti im Regenwald, in Südamerika."
@@ -114,10 +114,10 @@ export const band1 = {
       spread: 4,
       spreadImage: 'images/band1/s04.webp',
       left: {
-        text: "Lotti schaut sich um. Da bewegt sich etwas. Im Fluss schwimmt ein Tier. Man sieht nur Augen, Ohren und Nase. \\Ist das etwa ein Krokodil?\", denkt Lotti. Sie macht sich ganz klein, und ihre Kiemen zittern. Blubb, blubb! Langsam taucht das Tier auf."
+        text: "Lotti schaut sich um. Da bewegt sich etwas. Im Fluss schwimmt ein Tier. Man sieht nur Augen, Ohren und Nase. \\Ist das etwa ein Krokodil?", denkt Lotti. Sie macht sich ganz klein, und ihre Kiemen zittern. Blubb, blubb! Langsam taucht das Tier auf."
       },
       right: {
-        text: "Es ist kein Krokodil. Das ist Bruno, das Capybara. Er trägt ein rotes Halstuch mit weißen Punkten. Seine Augen, Ohren und Nase sitzen oben am Kopf. So sieht er auch beim Schwimmen alles. Bruno lächelt freundlich. \\Keine Angst\", sagt er. \\Ich bin ja da!\" Lotti atmet auf."
+        text: "Es ist kein Krokodil. Das ist Bruno, das Capybara. Er trägt ein rotes Halstuch mit weißen Punkten. Seine Augen, Ohren und Nase sitzen oben am Kopf. So sieht er auch beim Schwimmen alles. Bruno lächelt freundlich. \\Keine Angst„, sagt er. \\Ich bin ja da!" Lotti atmet auf."
       }
     },
     
@@ -151,7 +151,7 @@ export const band1 = {
       spread: 5,
       spreadImage: 'images/band1/s05.webp',
       left: {
-        text: "Lotti erzählt von Rudi. Bruno hört zu und kaut dabei auf einem Grashalm. Da platscht es laut. Ein Mädchen springt mit gelben Gummistiefeln in eine Pfütze. Das ist Paula. Sie wohnt hier am Fluss. \\Der Waschbär hat auch mein Haarband geklaut!\", ruft sie. \\Kommt mit! Ich weiß einen Weg!\""
+        text: "Lotti erzählt von Rudi. Bruno hört zu und kaut dabei auf einem Grashalm. Da platscht es laut. Ein Mädchen springt mit gelben Gummistiefeln in eine Pfütze. Das ist Paula. Sie wohnt hier am Fluss. \\Der Waschbär hat auch mein Haarband geklaut!„, ruft sie. \\Kommt mit! Ich weiß einen Weg!"„
       },
       right: {
         text: `Oben fliegt Tuko, der Tukan. Sein bunter Schnabel ist riesig, aber ganz leicht. Tuko klappert aufgeregt damit. „Ich hab's gesehen!", ruft er. „Der Dieb hat meine Mango! Rudi ist beim großen Baum." Mit dem Schnabel zeigt er auf einen Baum in der Ferne. Es ist der höchste im ganzen Wald.`
@@ -179,10 +179,10 @@ export const band1 = {
       spread: 6,
       spreadImage: 'images/band1/s06.webp',
       left: {
-        text: "Der Weg führt über einen Bach mit runden Trittsteinen. Paula hüpft voran, von Stein zu Stein. Doch dann rutscht Paula auf einem Stein aus. \\Hilfe!\", ruft sie. Bruno fängt sie auf. Bruno ist stark. \\Danke, Bruno!\", sagt Paula. \\Das war knapp!\" Dann lachen beide erleichtert."
+        text: „Der Weg führt über einen Bach mit runden Trittsteinen. Paula hüpft voran, von Stein zu Stein. Doch dann rutscht Paula auf einem Stein aus. \\Hilfe!„, ruft sie. Bruno fängt sie auf. Bruno ist stark. \\Danke, Bruno!", sagt Paula. \\Das war knapp!" Dann lachen beide erleichtert."
       },
       right: {
-        text: "Am Ast hängt Momo, das Faultier. Sie hängt kopfüber. Ihr Fell ist ein bisschen grün, weil darin winzige Pflanzen wachsen. \\Momo, hast du Rudi gesehen?\", fragt Paula. Momo spricht ganz langsam: \\Rudi … ist … oben.\" Dann fallen ihr die Augen zu. \\Chrrr\", schnarcht sie. Alle kichern. Im Schlaf zeigt Momo mit der Kralle nach oben."
+        text: "Am Ast hängt Momo, das Faultier. Sie hängt kopfüber. Ihr Fell ist ein bisschen grün, weil darin winzige Pflanzen wachsen. \\Momo, hast du Rudi gesehen?„, fragt Paula. Momo spricht ganz langsam: \\Rudi … ist … oben." Dann fallen ihr die Augen zu. \\Chrrr", schnarcht sie. Alle kichern. Im Schlaf zeigt Momo mit der Kralle nach oben."
       }
     },
     
@@ -234,10 +234,10 @@ export const band1 = {
       spread: 7,
       spreadImage: 'images/band1/s07.webp',
       left: {
-        text: "Der große Baum ist so hoch, dass man die Spitze kaum sieht. Da summt es. Fips, der Kolibri, saust nach oben. Seine Flügel schlagen so schnell, dass man sie kaum sieht. Er kann sogar rückwärts fliegen. Schwupp, ist er wieder unten. \\Sssst – schon da!\", ruft Fips."
+        text: „Der große Baum ist so hoch, dass man die Spitze kaum sieht. Da summt es. Fips, der Kolibri, saust nach oben. Seine Flügel schlagen so schnell, dass man sie kaum sieht. Er kann sogar rückwärts fliegen. Schwupp, ist er wieder unten. \\Sssst – schon da!", ruft Fips."
       },
       right: {
-        text: "\\Ich hab ihn gefunden!\", piepst Fips. Oben sitzt Rudi mit dem Rucksack. Er hockt in einer Baumhöhle, mit Paulas Haarband und Tukos Mango. \\Hihi!\", kichert Rudi. \\Fangt mich doch!\" Er klettert auf einen Ast über dem Fluss. Der Ast ist lang und dünn. \\Rudi, komm zurück!\", ruft Bruno."
+        text: „\\Ich hab ihn gefunden!„, piepst Fips. Oben sitzt Rudi mit dem Rucksack. Er hockt in einer Baumhöhle, mit Paulas Haarband und Tukos Mango. \\Hihi!", kichert Rudi. \\Fangt mich doch!„ Er klettert auf einen Ast über dem Fluss. Der Ast ist lang und dünn. \\Rudi, komm zurück!", ruft Bruno."
       }
     },
     
@@ -268,7 +268,7 @@ export const band1 = {
         text: "Der Ast wackelt und biegt sich. Rudi hört auf zu kichern. Dann knackt es laut. Krach! Der Ast bricht. Tuko kreischt, und Fips flattert erschrocken. Rudi und der Rucksack fallen in den Fluss. Platsch! Der Rucksack geht sofort unter. Alle halten die Luft an."
       },
       right: {
-        text: "Der Fluss ist schnell. Rudi klammert sich an ein Stück Holz. \\Hilfe!\", ruft Rudi. Jetzt ist er gar nicht mehr frech. Bruno überlegt keine Sekunde. \\Keine Angst, ich bin ja da!\", ruft er. Bruno springt sofort ins Wasser. Mit seinen Schwimmhäuten an den Füßen schwimmt er schnell zu Rudi."
+        text: „Der Fluss ist schnell. Rudi klammert sich an ein Stück Holz. \\Hilfe!„, ruft Rudi. Jetzt ist er gar nicht mehr frech. Bruno überlegt keine Sekunde. \\Keine Angst, ich bin ja da!", ruft er. Bruno springt sofort ins Wasser. Mit seinen Schwimmhäuten an den Füßen schwimmt er schnell zu Rudi."
       }
     },
     
@@ -300,10 +300,10 @@ export const band1 = {
       spread: 9,
       spreadImage: 'images/band1/s09.webp',
       left: {
-        text: "Der Rucksack liegt unten auf dem Grund. Lotti taucht nach dem Rucksack. Unter Wasser ist es grün und still. Kleine Fische schauen neugierig zu. Lotti hat Kiemen. Sie sitzen außen an ihrem Kopf. Damit kann sie unter Wasser atmen. Ganz unten packt sie den Rucksack. \\Hab ich dich!\""
+        text: "Der Rucksack liegt unten auf dem Grund. Lotti taucht nach dem Rucksack. Unter Wasser ist es grün und still. Kleine Fische schauen neugierig zu. Lotti hat Kiemen. Sie sitzen außen an ihrem Kopf. Damit kann sie unter Wasser atmen. Ganz unten packt sie den Rucksack. \\Hab ich dich!""
       },
       right: {
-        text: "Lotti taucht wieder auf. Bruno hält Rudi fest, doch die Strömung ist stark. Lotti greift in den Rucksack. \\Moment, ich hab da was!\" Heraus kommt ein Seil! Lotti wirft es Bruno zu. Paula und Tuko ziehen am anderen Ende. \\Hau ruck!\", ruft Paula. Bruno zieht Rudi an Land. Geschafft!"
+        text: „Lotti taucht wieder auf. Bruno hält Rudi fest, doch die Strömung ist stark. Lotti greift in den Rucksack. \\Moment, ich hab da was!„ Heraus kommt ein Seil! Lotti wirft es Bruno zu. Paula und Tuko ziehen am anderen Ende. \\Hau ruck!", ruft Paula. Bruno zieht Rudi an Land. Geschafft!"
       }
     },
     
@@ -356,10 +356,10 @@ export const band1 = {
       spread: 10,
       spreadImage: 'images/band1/s10.webp',
       left: {
-        text: "Rudi sitzt tropfnass am Ufer. \\Tut mir leid\", sagt er leise. \\Ich wollte doch nur Spaß haben.\" Er gibt alles zurück. Das Haarband hat er vorher im Fluss gewaschen. \\Ich wasche eben alles\", sagt er verlegen. Alle lachen. Jetzt sind alle Freunde. Sogar Momo winkt, ganz langsam."
+        text: "Rudi sitzt tropfnass am Ufer. \\Tut mir leid„, sagt er leise. \\Ich wollte doch nur Spaß haben." Er gibt alles zurück. Das Haarband hat er vorher im Fluss gewaschen. \\Ich wasche eben alles", sagt er verlegen. Alle lachen. Jetzt sind alle Freunde. Sogar Momo winkt, ganz langsam."
       },
       right: {
-        text: "Am Abend gehen alle zum Portal. Lotti und Rudi wollen zurück nach Mexiko. \\Besuchst du mich bald?\", fragt Bruno. \\Na klar!\", sagt Lotti und stellt sich neben ihn. Da leuchtet am Portal ein Stein. Darauf sind ein Axolotl und ein Capybara. Alle staunen. Wer hat das gemacht?"
+        text: „Am Abend gehen alle zum Portal. Lotti und Rudi wollen zurück nach Mexiko. \\Besuchst du mich bald?„, fragt Bruno. \\Na klar!", sagt Lotti und stellt sich neben ihn. Da leuchtet am Portal ein Stein. Darauf sind ein Axolotl und ein Capybara. Alle staunen. Wer hat das gemacht?"
       }
     },
     
