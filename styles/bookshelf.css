@@ -150,3 +150,32 @@
   border-radius: 999px;
   padding: 0.15rem 0.4rem;
 }
+
+.bmc-link {
+  position: absolute;
+  left: 50%;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  z-index: 2;
+  display: block;
+  line-height: 0;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.28));
+  touch-action: manipulation;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.bmc-link img {
+  display: block;
+  width: 196px;
+  height: auto;
+}
+
+.bmc-link:hover {
+  transform: translateX(-50%) translateY(-3px);
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.32));
+}
+
+.bmc-link:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}

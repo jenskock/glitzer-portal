@@ -8,6 +8,7 @@ export class BookReader {
     this.currentSpreadIndex = this.progress.page;
     this.touchStartX = 0;
     this.touchStartY = 0;
+    this.suppressPageSwipe = false;
     
     this.leftPageEl = document.getElementById('left-page');
     this.rightPageEl = document.getElementById('right-page');
@@ -37,11 +38,13 @@ export class BookReader {
   }
 
   handleTouchStart(e) {
+    this.suppressPageSwipe = isDrawingSurface(e.target);
     this.touchStartX = e.touches[0].clientX;
     this.touchStartY = e.touches[0].clientY;
   }
 
   handleTouchEnd(e) {
+    if (this.consumeDrawingGesture()) return;
     if (!this.touchStartX) return;
     
     const touchEndX = e.changedTouches[0].clientX;
@@ -62,11 +65,13 @@ export class BookReader {
   }
 
   handleMouseDown(e) {
+    this.suppressPageSwipe = isDrawingSurface(e.target);
     this.touchStartX = e.clientX;
     this.touchStartY = e.clientY;
   }
 
   handleMouseUp(e) {
+    if (this.consumeDrawingGesture()) return;
     if (!this.touchStartX) return;
     
     const diffX = this.touchStartX - e.clientX;
@@ -145,6 +150,14 @@ export class BookReader {
     this.nextButton.disabled = this.currentSpreadIndex >= this.book.pages.length - 1;
   }
 
+  consumeDrawingGesture() {
+    if (!this.suppressPageSwipe) return false;
+    this.suppressPageSwipe = false;
+    this.touchStartX = 0;
+    this.touchStartY = 0;
+    return true;
+  }
+
   cleanup() {
     this.prevButton.removeEventListener('click', this.onPrevClick);
     this.nextButton.removeEventListener('click', this.onNextClick);
@@ -153,4 +166,8 @@ export class BookReader {
     this.bookSpread.removeEventListener('mousedown', this.onMouseDown);
     this.bookSpread.removeEventListener('mouseup', this.onMouseUp);
   }
+}
+
+function isDrawingSurface(target) {
+  return target instanceof Element && target.closest('.maze-canvas') !== null;
 }

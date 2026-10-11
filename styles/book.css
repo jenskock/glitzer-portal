@@ -90,6 +90,9 @@
   color: #2d1e17;
   width: 100%;
   text-align: left;
+  margin-top: auto;
+  margin-bottom: auto;
+  flex-shrink: 0;
 }
 
 .page-illustration {
@@ -229,7 +232,10 @@
   border-radius: 12px;
   margin-top: 1rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  /* Auto margins on .page-text center a short paragraph. Centering with
+     align-items slides a taller paragraph above this scrollport, so its
+     first line cannot be scrolled back into view. */
 }
 
 .page-text-container::-webkit-scrollbar {
