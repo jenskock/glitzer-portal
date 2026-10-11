@@ -20,8 +20,9 @@ export function renderStoryPage(pageData, container, side) {
     img.style.width = '200%';
     img.style.height = '100%';
     img.style.objectFit = 'cover';
+    img.style.display = 'block';
     // Position image to show left or right half
-    img.style.objectPosition = side === 'left' ? '0% center' : '100% center';
+    img.style.marginLeft = side === 'left' ? '0' : '-100%';
     illustration.appendChild(img);
   }
   
