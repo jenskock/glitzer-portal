@@ -12,11 +12,10 @@ export class InitialSoundsPuzzle {
     const puzzleDiv = document.createElement('div');
     puzzleDiv.className = 'initial-sounds-puzzle';
     puzzleDiv.style.display = 'grid';
-    puzzleDiv.style.gridTemplateColumns = 'repeat(4, 1fr)';
-    puzzleDiv.style.gap = '20px';
-    puzzleDiv.style.padding = '40px';
-    puzzleDiv.style.maxWidth = '1200px';
-    puzzleDiv.style.margin = '0 auto';
+    puzzleDiv.style.gap = '1rem';
+    puzzleDiv.style.width = '100%';
+    puzzleDiv.style.height = '100%';
+    puzzleDiv.style.minHeight = '0';
     
     this.data.items.forEach(item => {
       const itemEl = document.createElement('div');
@@ -32,7 +31,8 @@ export class InitialSoundsPuzzle {
       img.src = item.image;
       img.alt = item.word;
       img.style.width = '100%';
-      img.style.height = 'auto';
+      img.style.height = '100%';
+      img.style.objectFit = 'contain';
       img.style.display = 'block';
       
       const label = document.createElement('div');
@@ -40,7 +40,7 @@ export class InitialSoundsPuzzle {
       label.textContent = item.word;
       label.style.padding = '10px';
       label.style.textAlign = 'center';
-      label.style.fontFamily = 'Baloo2, cursive';
+      label.style.fontFamily = 'Source Sans 3, sans-serif';
       label.style.fontSize = '1.2rem';
       label.style.fontWeight = 'bold';
       label.style.color = '#333';

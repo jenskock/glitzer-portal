@@ -15,9 +15,17 @@
 }
 
 @font-face {
-  font-family: 'Baloo2';
-  src: url('../assets/fonts/Baloo2.woff2') format('woff2');
+  font-family: 'Source Sans 3';
+  src: url('../assets/fonts/SourceSans3-Regular.woff2') format('woff2');
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('../assets/fonts/SourceSans3-Bold.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -54,13 +62,20 @@ body {
   transition: opacity 0.3s ease;
 }
 
+/* pointer-events is not inherited; descendants keep the initial value auto
+   and would sit invisibly over the shelf, swallowing clicks. */
+.view:not(.active),
+.view:not(.active) * {
+  pointer-events: none;
+}
+
 .view.active {
   opacity: 1;
   pointer-events: all;
 }
 
 button {
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
   cursor: pointer;
   border: none;
   background: none;

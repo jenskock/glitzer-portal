@@ -31,9 +31,18 @@ export function renderPuzzlePage(pageData, leftContainer, rightContainer) {
   
   puzzleWrapper.appendChild(header);
   puzzleWrapper.appendChild(content);
-  leftContainer.appendChild(puzzleWrapper);
-  
-  // Clear right page for puzzle spreads
+
+  if (pageData.puzzleType === 'search' || pageData.puzzleType === 'differences') {
+    header.appendChild(createHintToggle(content));
+  }
+
+  const spread = leftContainer.closest('.book-spread');
+  if (spread) {
+    spread.appendChild(puzzleWrapper);
+  } else {
+    leftContainer.appendChild(puzzleWrapper);
+  }
+
   if (rightContainer) {
     rightContainer.innerHTML = '';
   }
@@ -72,6 +81,20 @@ export function renderPuzzlePage(pageData, leftContainer, rightContainer) {
   if (puzzle) {
     puzzle.onComplete = () => showPraise(pageData.praise, puzzleWrapper);
   }
+}
+
+function createHintToggle(content) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'hint-toggle';
+  button.textContent = 'Tipp zeigen';
+  button.setAttribute('aria-pressed', 'false');
+  button.addEventListener('click', () => {
+    const visible = content.classList.toggle('hints-visible');
+    button.setAttribute('aria-pressed', String(visible));
+    button.textContent = visible ? 'Tipp verstecken' : 'Tipp zeigen';
+  });
+  return button;
 }
 
 function showPraise(praise, container) {

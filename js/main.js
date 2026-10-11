@@ -40,6 +40,7 @@ class App {
     
     this.currentBook = null;
     this.bookReader = null;
+    renderBookshelf(books, (book) => this.openBook(book));
   }
 }
 

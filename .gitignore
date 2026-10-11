@@ -1,7 +1,10 @@
 # Dependencies
 node_modules/
 
-# Playwright
+# Vite
+dist/
+
+# Playwright output, if tests are added again
 /test-results/
 /playwright-report/
 /blob-report/
@@ -10,6 +13,7 @@ node_modules/
 
 # Local debug captures
 debug-screenshot.png
+artifacts/
 
 # Environment
 .env

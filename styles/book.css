@@ -37,6 +37,7 @@
 }
 
 .book-spread {
+  position: relative;
   display: flex;
   gap: 2rem;
   width: min(calc(100vw - 4rem), 1400px);
@@ -133,59 +134,73 @@
   right: 1rem;
 }
 
-/* Cover page */
+.book-spread.is-cover {
+  gap: 0;
+  width: min(calc(100vw - 8rem), calc((100vh - 4rem) * 16 / 9), 1280px);
+  height: min(calc(100vh - 4rem), calc((100vw - 8rem) * 9 / 16), 720px);
+}
+
+.book-spread.is-cover .right-page-wrapper {
+  display: none;
+}
+
+.book-spread.is-cover .left-page-wrapper {
+  flex: 1 1 auto;
+}
+
+/* Cover page — full-bleed story illustration */
 .cover-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(135deg, var(--book-color, #4ECDC4) 0%, var(--book-color-light, #5DD9D1) 100%);
-  color: white;
-  position: relative;
+  padding: 0;
+  background: #16324a;
   overflow: hidden;
 }
 
-.cover-page::before {
-  content: '';
+.cover-art {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('../assets/characters/portal.svg') center center no-repeat;
-  background-size: 60%;
-  opacity: 0.15;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.cover-copy {
+  position: absolute;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: max-content;
+  max-width: min(680px, 88%);
+  text-align: center;
+  background: rgba(255, 249, 240, 0.92);
+  color: #2d1e17;
+  border-radius: 18px;
+  padding: 0.65rem 1.5rem 0.8rem;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
 }
 
 .cover-series {
-  font-family: 'Baloo2', cursive;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  margin-bottom: 1rem;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 1;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  color: #1a7a86;
+  line-height: 1.2;
 }
 
 .cover-title {
-  font-family: 'Baloo2', cursive;
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: clamp(1.55rem, 3vw, 2.5rem);
   font-weight: bold;
-  margin-bottom: 1rem;
-  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
-  position: relative;
-  z-index: 1;
-  line-height: 1.3;
-  max-width: 80%;
+  color: #2d1e17;
+  line-height: 1.15;
+  margin: 0.1rem 0;
 }
 
 .cover-subtitle {
-  font-family: 'Baloo2', cursive;
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  margin-top: 2rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 1;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  color: #3d6b62;
+  line-height: 1.2;
 }
 
 /* Story page */
@@ -235,51 +250,100 @@
   background: rgba(102, 126, 234, 0.5);
 }
 
-/* Puzzle page - spans both pages */
-.puzzle-page-left,
-.puzzle-page-right {
-  overflow: visible;
+.book-spread--puzzle {
+  gap: 0;
+  z-index: 0;
+}
+
+.book-spread--puzzle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.book-spread--puzzle .left-page-wrapper .page,
+.book-spread--puzzle .right-page-wrapper .page {
+  box-shadow: none;
+}
+
+.book-spread--puzzle .left-page-wrapper .page {
+  border-radius: 12px 0 0 12px;
+}
+
+.book-spread--puzzle .right-page-wrapper .page {
+  border-radius: 0 12px 12px 0;
+  margin-left: -1px;
 }
 
 .puzzle-spread-wrapper {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: min(calc(100vw - 4rem), 1400px);
-  height: min(calc(100vh - 4rem), 900px);
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
-  padding: 3rem;
-  z-index: 10;
+  padding: 1.5rem 4.5rem 1.25rem;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.puzzle-header,
+.puzzle-content {
+  pointer-events: auto;
 }
 
 .puzzle-header {
+  flex: 0 0 auto;
   text-align: center;
-  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+  margin: -1.5rem -4.5rem 0.75rem;
+  padding: 1.15rem 4.5rem 0.85rem;
+  background: #FFF9F0;
+  border-radius: 12px 12px 0 0;
 }
 
 .puzzle-title {
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 700;
   font-size: clamp(1.8rem, 3vw, 2.5rem);
-  color: #4ECDC4;
-  margin-bottom: 0.5rem;
+  color: #1a9b92;
+  margin-bottom: 0.35rem;
 }
 
 .puzzle-instruction {
   font-family: 'Andika', sans-serif;
   font-size: clamp(1.1rem, 2vw, 1.4rem);
-  color: #666;
-  line-height: 1.6;
+  color: #2d1e17;
+  line-height: 1.45;
+}
+
+.hint-toggle {
+  margin-top: 0.65rem;
+  padding: 0.4rem 1.15rem;
+  border-radius: 999px;
+  background: #1a9b92;
+  color: white;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 3px 10px rgba(26, 155, 146, 0.35);
+}
+
+.hint-toggle[aria-pressed='true'] {
+  background: #c47a3a;
 }
 
 .puzzle-content {
   flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  container-type: size;
 }
 
 .praise-message {
@@ -291,7 +355,8 @@
   color: white;
   padding: 1rem 2rem;
   border-radius: 50px;
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 700;
   font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   display: flex;

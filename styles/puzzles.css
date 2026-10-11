@@ -1,14 +1,33 @@
-/* Search puzzle */
-.search-puzzle {
+/* Picture games share one box with their hit targets */
+.art-frame {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: var(--art-ratio, 1.7778);
+  width: min(100cqw, calc(100cqh * var(--art-ratio, 1.7778)));
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.art-frame > img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  object-fit: fill;
+  display: block;
+  pointer-events: none;
+  border-radius: 15px;
+}
+
+/* Search puzzle */
+.search-puzzle {
   position: relative;
 }
 
 .search-item {
   position: absolute;
-  width: 60px;
-  height: 60px;
   cursor: pointer;
   transition: all 0.2s ease;
   border-radius: 50%;
@@ -21,7 +40,23 @@
 
 .search-item.found {
   border-color: #4ECDC4;
-  background: rgba(78, 205, 196, 0.2);
+  background: rgba(78, 205, 196, 0.6);
+}
+
+.hints-visible .search-item:not(.found),
+.hints-visible .difference-spot:not(.found) {
+  border: 2px dashed rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-bonus {
+  border: 3px solid transparent;
+  border-radius: 50%;
+}
+
+.hints-visible .search-bonus {
+  border: 2px dashed rgba(255, 215, 0, 0.75);
+  background: rgba(255, 215, 0, 0.12);
 }
 
 .search-item img {
@@ -36,30 +71,30 @@
   height: 100%;
   display: flex;
   gap: 2rem;
+  min-height: 0;
 }
 
 .diff-image {
-  flex: 1;
-  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;
 }
 
 .difference-spot {
   position: absolute;
-  width: 80px;
-  height: 80px;
   border-radius: 50%;
   cursor: pointer;
   border: 3px solid transparent;
   transition: all 0.2s ease;
 }
 
-.difference-spot:hover {
-  background: rgba(255, 107, 107, 0.2);
-}
-
 .difference-spot.found {
-  border-color: #FF6B6B;
-  background: rgba(255, 107, 107, 0.3);
+  border-color: #FF6B9D;
+  background: rgba(255, 107, 157, 0.6);
   animation: found-pulse 0.5s ease;
 }
 
@@ -71,15 +106,17 @@
 /* Initial sounds puzzle */
 .initial-sounds-puzzle {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  padding: 2rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0.5rem;
   width: 100%;
-  max-width: 900px;
+  height: 100%;
 }
 
 .sound-item {
-  aspect-ratio: 1;
+  min-height: 0;
+  height: 100%;
   background: white;
   border-radius: 20px;
   cursor: pointer;
@@ -109,12 +146,20 @@
   opacity: 0.5;
 }
 
+.sound-item img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: contain;
+}
+
 .sound-item-icon {
   font-size: 4rem;
 }
 
 .sound-item-word {
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1.5rem;
   color: #2d1e17;
   opacity: 0;
@@ -129,10 +174,10 @@
 .fact-cards-puzzle {
   width: 100%;
   height: 100%;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+  align-items: stretch;
 }
 
 .fact-character {
@@ -155,20 +200,23 @@
 
 .fact-cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 1000px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
   width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
 .fact-card {
   background: white;
   border-radius: 15px;
-  padding: 2rem;
+  padding: 1.25rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.3s ease;
-  min-height: 150px;
+  min-height: 0;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,7 +229,7 @@
   content: '?';
   position: absolute;
   font-size: 8rem;
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
   color: rgba(78, 205, 196, 0.1);
   font-weight: bold;
 }
@@ -215,8 +263,7 @@
 }
 
 .fact-quiz {
-  width: 100%;
-  max-width: 600px;
+  width: min(100%, 720px);
   background: white;
   border-radius: 20px;
   padding: 2rem;
@@ -224,7 +271,7 @@
 }
 
 .fact-quiz-question {
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1.5rem;
   color: #2d1e17;
   margin-bottom: 1.5rem;
@@ -266,24 +313,24 @@
 
 /* Maze puzzle */
 .maze-puzzle {
-  width: 100%;
-  height: 100%;
   position: relative;
   touch-action: none;
 }
 
 .maze-canvas {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  background: white;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  background: transparent;
+  box-shadow: none;
 }
 
 /* Quiz puzzle */
 .quiz-puzzle {
   width: 100%;
-  max-width: 700px;
+  height: 100%;
 }
 
 .quiz-question {
@@ -295,7 +342,8 @@
 }
 
 .quiz-question-text {
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 700;
   font-size: 1.6rem;
   color: #2d1e17;
   margin-bottom: 1.5rem;
@@ -304,8 +352,11 @@
 
 .quiz-options {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
 }
 
 .quiz-option {
@@ -341,7 +392,7 @@
 
 .quiz-progress {
   text-align: center;
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1.2rem;
   color: #666;
   margin-bottom: 1rem;
@@ -350,82 +401,99 @@
 /* Memory puzzle */
 .memory-puzzle {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  max-width: 800px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: min(1.5rem, 3.5%);
   width: 100%;
-  padding: 2rem;
+  height: 100%;
+  padding: min(0.85rem, 2%) min(1.25rem, 3%);
+  place-items: center;
+  perspective: 1200px;
 }
 
 .memory-card {
-  aspect-ratio: 3/4;
-  background: white;
+  width: 76%;
+  aspect-ratio: 1;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
   border-radius: 15px;
   cursor: pointer;
   position: relative;
+  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transition: transform 0.4s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.memory-card.flipped {
+.memory-card:active {
+  transform: none;
+}
+
+.memory-card.flipped,
+.memory-card.flipped:active {
   transform: rotateY(180deg);
 }
 
 .memory-card.matched {
-  opacity: 0.6;
-  cursor: not-allowed;
+  cursor: default;
+  box-shadow: 0 0 0 4px #1a9b92, 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .memory-card-face {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 15px;
   overflow: hidden;
 }
 
 .memory-card-back {
-  background: linear-gradient(135deg, #4ECDC4 0%, #5DD9D1 100%);
-}
-
-.memory-card-back img {
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
+  background: #149b96;
 }
 
 .memory-card-front {
   transform: rotateY(180deg);
-  background: white;
+  background: #fff8ee;
 }
 
-.memory-card-front img {
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
+.memory-card-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
 }
 
 /* Coloring puzzle */
 .coloring-puzzle {
   width: 100%;
   height: 100%;
+  min-height: 0;
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .coloring-canvas-container {
   flex: 1;
+  min-width: 0;
+  height: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .coloring-canvas {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 20px;
   background: white;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
@@ -433,9 +501,13 @@
 }
 
 .color-palette {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 0.75rem;
+  align-content: center;
+  justify-items: center;
+  flex: 0 0 auto;
+  height: 100%;
 }
 
 .color-button {
@@ -458,13 +530,13 @@
 }
 
 .done-button {
+  grid-column: 1 / -1;
   background: #4ECDC4;
   color: white;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 50px;
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1.3rem;
-  margin-top: auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease;
 }
@@ -477,7 +549,7 @@
 /* Word-image puzzle */
 .word-image-puzzle {
   width: 100%;
-  max-width: 800px;
+  height: 100%;
 }
 
 .word-image-round {
@@ -488,7 +560,7 @@
 }
 
 .word-display {
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 3rem;
   color: #4ECDC4;
   text-align: center;
@@ -546,7 +618,7 @@
 
 .word-progress {
   text-align: center;
-  font-family: 'Baloo2', cursive;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1.2rem;
   color: #666;
   margin-bottom: 1rem;

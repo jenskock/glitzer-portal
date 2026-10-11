@@ -12,13 +12,17 @@ export class ColoringPuzzle {
     const puzzleDiv = document.createElement('div');
     puzzleDiv.className = 'coloring-puzzle';
     puzzleDiv.style.display = 'flex';
-    puzzleDiv.style.flexDirection = 'column';
+    puzzleDiv.style.flexDirection = 'row';
+    puzzleDiv.style.alignItems = 'center';
+    puzzleDiv.style.width = '100%';
     puzzleDiv.style.height = '100%';
-    puzzleDiv.style.gap = '20px';
+    puzzleDiv.style.gap = '1.5rem';
     
     const canvasContainer = document.createElement('div');
     canvasContainer.className = 'coloring-canvas-container';
     canvasContainer.style.flex = '1';
+    canvasContainer.style.minWidth = '0';
+    canvasContainer.style.height = '100%';
     canvasContainer.style.position = 'relative';
     canvasContainer.style.display = 'flex';
     canvasContainer.style.justifyContent = 'center';
@@ -29,6 +33,8 @@ export class ColoringPuzzle {
     canvas.className = 'coloring-canvas';
     canvas.width = 1200;
     canvas.height = 800;
+    canvas.style.width = 'auto';
+    canvas.style.height = 'auto';
     canvas.style.maxWidth = '100%';
     canvas.style.maxHeight = '100%';
     canvas.style.cursor = 'crosshair';
@@ -59,11 +65,7 @@ export class ColoringPuzzle {
     // Color palette
     const palette = document.createElement('div');
     palette.className = 'color-palette';
-    palette.style.display = 'flex';
-    palette.style.gap = '12px';
-    palette.style.justifyContent = 'center';
-    palette.style.flexWrap = 'wrap';
-    palette.style.padding = '0 20px';
+    palette.style.height = '100%';
     
     this.data.colors.forEach(color => {
       const btn = document.createElement('button');
@@ -101,7 +103,7 @@ export class ColoringPuzzle {
     doneBtn.textContent = 'Fertig';
     doneBtn.style.padding = '12px 30px';
     doneBtn.style.fontSize = '1.2rem';
-    doneBtn.style.fontFamily = 'Baloo2, cursive';
+    doneBtn.style.fontFamily = 'Source Sans 3, sans-serif';
     doneBtn.style.backgroundColor = '#4ECDC4';
     doneBtn.style.color = 'white';
     doneBtn.style.border = 'none';

@@ -1,3 +1,5 @@
+import { bindArtRatio } from './art-frame.js';
+
 export class MazePuzzle {
   constructor(data, container) {
     this.data = data;
@@ -11,23 +13,14 @@ export class MazePuzzle {
 
   render() {
     const puzzleDiv = document.createElement('div');
-    puzzleDiv.className = 'maze-puzzle';
-    puzzleDiv.style.position = 'relative';
-    puzzleDiv.style.width = '100%';
-    puzzleDiv.style.height = '100%';
+    puzzleDiv.className = 'maze-puzzle art-frame';
     
     // Background image (jungle frame with empty meadow)
     const bg = document.createElement('img');
     bg.src = this.data.image;
     bg.alt = 'Labyrinth';
-    bg.style.width = '100%';
-    bg.style.height = '100%';
-    bg.style.objectFit = 'contain';
-    bg.style.position = 'absolute';
-    bg.style.top = '0';
-    bg.style.left = '0';
-    bg.style.pointerEvents = 'none';
     puzzleDiv.appendChild(bg);
+    bindArtRatio(puzzleDiv, bg);
     
     // Canvas for maze paths and tracing
     const canvas = document.createElement('canvas');

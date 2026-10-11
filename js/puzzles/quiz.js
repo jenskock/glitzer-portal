@@ -37,20 +37,22 @@ export class QuizPuzzle {
     const questionDiv = document.createElement('div');
     questionDiv.className = 'quiz-question';
     questionDiv.textContent = q.question;
-    questionDiv.style.fontFamily = 'Baloo2, cursive';
+    questionDiv.style.fontFamily = 'Source Sans 3, sans-serif';
     questionDiv.style.fontSize = '1.8rem';
     questionDiv.style.marginBottom = '30px';
     questionDiv.style.textAlign = 'center';
     questionDiv.style.color = '#333';
-    questionDiv.style.maxWidth = '800px';
+    questionDiv.style.width = '100%';
     this.puzzleDiv.appendChild(questionDiv);
     
     const optionsDiv = document.createElement('div');
     optionsDiv.className = 'quiz-options';
     optionsDiv.style.display = 'flex';
+    optionsDiv.style.flexDirection = 'row';
     optionsDiv.style.gap = '20px';
     optionsDiv.style.flexWrap = 'wrap';
     optionsDiv.style.justifyContent = 'center';
+    optionsDiv.style.width = '100%';
     
     q.options.forEach((option, index) => {
       const optionDiv = document.createElement('div');
@@ -60,8 +62,12 @@ export class QuizPuzzle {
       optionDiv.style.overflow = 'hidden';
       optionDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
       optionDiv.style.transition = 'transform 0.2s';
-      optionDiv.style.width = '200px';
+      optionDiv.style.flex = '1 1 220px';
+      optionDiv.style.maxWidth = '340px';
+      optionDiv.style.width = 'auto';
       optionDiv.style.background = 'white';
+      optionDiv.style.display = 'flex';
+      optionDiv.style.flexDirection = 'column';
       
       if (option.image) {
         const img = document.createElement('img');

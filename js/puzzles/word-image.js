@@ -37,7 +37,7 @@ export class WordImagePuzzle {
     const wordDiv = document.createElement('div');
     wordDiv.className = 'word-to-match';
     wordDiv.textContent = round.word;
-    wordDiv.style.fontFamily = 'Baloo2, cursive';
+    wordDiv.style.fontFamily = 'Source Sans 3, sans-serif';
     wordDiv.style.fontSize = '3rem';
     wordDiv.style.fontWeight = 'bold';
     wordDiv.style.marginBottom = '40px';
@@ -50,6 +50,7 @@ export class WordImagePuzzle {
     optionsDiv.style.display = 'flex';
     optionsDiv.style.gap = '30px';
     optionsDiv.style.justifyContent = 'center';
+    optionsDiv.style.width = '100%';
     
     round.options.forEach(option => {
       const optionDiv = document.createElement('div');
@@ -59,7 +60,9 @@ export class WordImagePuzzle {
       optionDiv.style.overflow = 'hidden';
       optionDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
       optionDiv.style.transition = 'transform 0.2s';
-      optionDiv.style.width = '220px';
+      optionDiv.style.flex = '1 1 0';
+      optionDiv.style.maxWidth = '360px';
+      optionDiv.style.width = 'auto';
       optionDiv.style.background = 'white';
       
       const img = document.createElement('img');
