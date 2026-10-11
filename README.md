@@ -80,6 +80,16 @@ npm test
 └── tests/                  # Playwright tests
 ```
 
+## 🎨 Illustration Style Guide
+
+All book illustrations follow a consistent comic-style aesthetic:
+
+- **Style Prompt**: See [`illustration/style-prompt.md`](illustration/style-prompt.md)
+- **Reference Image**: [`illustration/stil-referenz-ds1.jpg`](illustration/stil-referenz-ds1.jpg)
+- **Character Lineup**: [`illustration/characters/lineup.png`](illustration/characters/lineup.png)
+
+For technical details on the image-based architecture and hotspot data format, see [`REFACTORING_SUMMARY.md`](REFACTORING_SUMMARY.md).
+
 ## 🎨 Adding New Volumes
 
 To add Band 2, Band 3, etc.:
@@ -87,6 +97,7 @@ To add Band 2, Band 3, etc.:
 1. Create `books/band2.js` with the same structure as `band1.js`
 2. Import and add to the books array in `js/main.js`
 3. Add any new character SVGs to `assets/characters/`
+4. Generate illustrations following the style guide
 
 No code changes needed - the bookshelf is data-driven!
 
