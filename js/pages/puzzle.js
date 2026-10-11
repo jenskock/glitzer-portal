@@ -8,11 +8,16 @@ import { MemoryPuzzle } from '../puzzles/memory.js';
 import { ColoringPuzzle } from '../puzzles/coloring.js';
 import { WordImagePuzzle } from '../puzzles/word-image.js';
 
-export function renderPuzzlePage(pageData, container) {
-  container.className = 'page';
+export function renderPuzzlePage(pageData, leftContainer, rightContainer) {
+  // Puzzle spans both pages
+  leftContainer.className = 'page puzzle-page-left';
+  if (rightContainer) {
+    rightContainer.className = 'page puzzle-page-right';
+  }
   
-  const puzzleDiv = document.createElement('div');
-  puzzleDiv.className = 'puzzle-page';
+  // Create wrapper that spans both pages
+  const puzzleWrapper = document.createElement('div');
+  puzzleWrapper.className = 'puzzle-spread-wrapper';
   
   const header = document.createElement('div');
   header.className = 'puzzle-header';
@@ -24,9 +29,14 @@ export function renderPuzzlePage(pageData, container) {
   const content = document.createElement('div');
   content.className = 'puzzle-content';
   
-  puzzleDiv.appendChild(header);
-  puzzleDiv.appendChild(content);
-  container.appendChild(puzzleDiv);
+  puzzleWrapper.appendChild(header);
+  puzzleWrapper.appendChild(content);
+  leftContainer.appendChild(puzzleWrapper);
+  
+  // Clear right page for puzzle spreads
+  if (rightContainer) {
+    rightContainer.innerHTML = '';
+  }
   
   let puzzle;
   switch (pageData.puzzleType) {

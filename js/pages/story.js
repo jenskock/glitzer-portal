@@ -1,4 +1,4 @@
-import { renderScene } from '../scenes/scene-renderer.js';
+import { renderScene } from '../scenes/scene-renderer-v2.js';
 
 export function renderStoryPage(pageData, container, side) {
   container.className = 'page';

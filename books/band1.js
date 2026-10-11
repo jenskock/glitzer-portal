@@ -1,7 +1,7 @@
-// Das Glitzer-Portal - Band 1: Das Raetsel des leuchtenden Steins
+// Das Glitzer-Portal - Band 1: Das Rätsel des leuchtenden Steins
 export const band1 = {
   id: 'band1',
-  title: 'Das Raetsel des leuchtenden Steins',
+  title: 'Das Rätsel des leuchtenden Steins',
   series: 'Das Glitzer-Portal',
   coverColor: '#4ECDC4',
   pages: [
@@ -10,8 +10,7 @@ export const band1 = {
       type: 'cover',
       title: 'Das Rätsel des leuchtenden Steins',
       series: 'Das Glitzer-Portal',
-      subtitle: 'Band 1',
-      image: 'cover'
+      subtitle: 'Band 1'
     },
     // Doppelseite 1 - Lotti im See
     {

@@ -3,20 +3,42 @@ export function renderBookshelf(books, onBookClick) {
   container.innerHTML = '';
 
   books.forEach(book => {
-    const spine = document.createElement('div');
-    spine.className = 'book-spine';
-    spine.style.setProperty('--book-color', book.coverColor);
-    spine.style.setProperty('--book-color-light', lightenColor(book.coverColor, 20));
+    const cover = document.createElement('div');
+    cover.className = 'book-cover';
+    cover.style.setProperty('--book-color', book.coverColor);
+    cover.style.setProperty('--book-color-light', lightenColor(book.coverColor, 15));
     
-    spine.innerHTML = `
-      <div class="book-spine-series">${book.series}</div>
-      <div class="book-spine-title">${book.title}</div>
-      <div class="book-spine-band">${book.id.replace('band', '')}</div>
+    cover.innerHTML = `
+      <div class="book-cover-series">${book.series}</div>
+      <div class="book-cover-illustration">
+        <svg viewBox="0 0 180 180" width="180" height="180">
+          <circle cx="90" cy="90" r="70" fill="none" stroke="#fff" stroke-width="6" opacity="0.3"/>
+          <circle cx="60" cy="80" r="4" fill="#fff"/>
+          <circle cx="90" cy="50" r="4" fill="#fff"/>
+          <circle cx="120" cy="80" r="4" fill="#fff"/>
+          <circle cx="130" cy="110" r="4" fill="#fff"/>
+          <circle cx="50" cy="110" r="4" fill="#fff"/>
+          
+          <g transform="translate(40, 100) scale(0.2)">
+            <ellipse cx="50" cy="50" rx="30" ry="35" fill="#FFB6D9" stroke="#2d1e17" stroke-width="3"/>
+            <circle cx="45" cy="45" r="4" fill="#2d1e17"/>
+            <circle cx="55" cy="45" r="4" fill="#2d1e17"/>
+          </g>
+          
+          <g transform="translate(90, 95) scale(0.18)">
+            <ellipse cx="50" cy="60" rx="40" ry="45" fill="#b8794a" stroke="#2d1e17" stroke-width="3"/>
+            <circle cx="42" cy="50" r="5" fill="#2d1e17"/>
+            <circle cx="58" cy="50" r="5" fill="#2d1e17"/>
+          </g>
+        </svg>
+      </div>
+      <div class="book-cover-title">${book.title}</div>
+      <div class="book-cover-band">Band ${book.id.replace('band', '')}</div>
     `;
     
-    spine.addEventListener('click', () => onBookClick(book));
+    cover.addEventListener('click', () => onBookClick(book));
     
-    container.appendChild(spine);
+    container.appendChild(cover);
   });
 }
 

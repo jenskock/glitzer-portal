@@ -115,15 +115,19 @@ export class BookReader {
     
     this.leftPageEl.innerHTML = '';
     this.rightPageEl.innerHTML = '';
+    this.rightPageEl.style.opacity = '1';
     
-    if (leftPage) {
+    if (leftPage && leftPage.type === 'puzzle') {
+      // Puzzle spreads use both pages
+      renderPage(leftPage, this.leftPageEl, this.book, 'left', this.rightPageEl);
+    } else if (leftPage) {
       renderPage(leftPage, this.leftPageEl, this.book, 'left');
-    }
-    
-    if (rightPage) {
-      renderPage(rightPage, this.rightPageEl, this.book, 'right');
-    } else {
-      this.rightPageEl.style.opacity = '0';
+      
+      if (rightPage) {
+        renderPage(rightPage, this.rightPageEl, this.book, 'right');
+      } else {
+        this.rightPageEl.style.opacity = '0';
+      }
     }
     
     this.updateButtons();
