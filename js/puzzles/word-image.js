@@ -11,14 +11,20 @@ export class WordImagePuzzle {
   render() {
     const puzzleDiv = document.createElement('div');
     puzzleDiv.className = 'word-image-puzzle';
-    this.puzzleDiv = puzzleDiv;
+    puzzleDiv.style.display = 'flex';
+    puzzleDiv.style.flexDirection = 'column';
+    puzzleDiv.style.alignItems = 'center';
+    puzzleDiv.style.justifyContent = 'center';
+    puzzleDiv.style.height = '100%';
+    puzzleDiv.style.padding = '40px';
     
-    this.renderRound();
+    this.puzzleDiv = puzzleDiv;
+    this.showRound();
     
     this.container.appendChild(puzzleDiv);
   }
 
-  renderRound() {
+  showRound() {
     this.puzzleDiv.innerHTML = '';
     
     if (this.currentRound >= this.data.rounds.length) {
@@ -26,77 +32,90 @@ export class WordImagePuzzle {
       return;
     }
     
-    const progress = document.createElement('div');
-    progress.className = 'word-progress';
-    progress.textContent = `Wort ${this.currentRound + 1} von ${this.data.rounds.length}`;
-    this.puzzleDiv.appendChild(progress);
-    
     const round = this.data.rounds[this.currentRound];
     
-    const roundDiv = document.createElement('div');
-    roundDiv.className = 'word-image-round';
-    
-    const wordDisplay = document.createElement('div');
-    wordDisplay.className = 'word-display';
-    wordDisplay.textContent = round.word;
-    roundDiv.appendChild(wordDisplay);
+    const wordDiv = document.createElement('div');
+    wordDiv.className = 'word-to-match';
+    wordDiv.textContent = round.word;
+    wordDiv.style.fontFamily = 'Baloo2, cursive';
+    wordDiv.style.fontSize = '3rem';
+    wordDiv.style.fontWeight = 'bold';
+    wordDiv.style.marginBottom = '40px';
+    wordDiv.style.color = '#4ECDC4';
+    wordDiv.style.letterSpacing = '0.1em';
+    this.puzzleDiv.appendChild(wordDiv);
     
     const optionsDiv = document.createElement('div');
-    optionsDiv.className = 'word-options';
+    optionsDiv.className = 'word-image-options';
+    optionsDiv.style.display = 'flex';
+    optionsDiv.style.gap = '30px';
+    optionsDiv.style.justifyContent = 'center';
     
     round.options.forEach(option => {
-      const optionEl = document.createElement('button');
-      optionEl.className = 'word-option';
+      const optionDiv = document.createElement('div');
+      optionDiv.className = 'word-image-option';
+      optionDiv.style.cursor = 'pointer';
+      optionDiv.style.borderRadius = '15px';
+      optionDiv.style.overflow = 'hidden';
+      optionDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+      optionDiv.style.transition = 'transform 0.2s';
+      optionDiv.style.width = '220px';
+      optionDiv.style.background = 'white';
       
-      const icon = document.createElement('div');
-      icon.className = 'word-option-icon';
-      icon.textContent = this.getEmoji(option);
+      const img = document.createElement('img');
+      img.src = option.image;
+      img.alt = option.name;
+      img.style.width = '100%';
+      img.style.height = '220px';
+      img.style.objectFit = 'cover';
+      img.style.display = 'block';
+      optionDiv.appendChild(img);
       
       const label = document.createElement('div');
-      label.className = 'word-option-label';
-      label.textContent = option.toUpperCase();
+      label.textContent = option.name;
+      label.style.padding = '15px';
+      label.style.textAlign = 'center';
+      label.style.fontFamily = 'Andika, sans-serif';
+      label.style.fontSize = '1.2rem';
+      label.style.fontWeight = 'bold';
+      label.style.color = '#333';
+      label.style.display = 'none'; // Hidden until clicked
+      optionDiv.appendChild(label);
       
-      optionEl.appendChild(icon);
-      optionEl.appendChild(label);
+      optionDiv.addEventListener('mouseenter', () => {
+        optionDiv.style.transform = 'scale(1.05)';
+      });
       
-      optionEl.addEventListener('click', () => {
-        if (option === round.options[0]) {
-          optionEl.classList.add('correct');
-          
-          round.options.forEach(opt => {
-            const btn = optionsDiv.children[round.options.indexOf(opt)];
-            if (opt !== round.options[0]) btn.classList.add('disabled');
-          });
+      optionDiv.addEventListener('mouseleave', () => {
+        optionDiv.style.transform = 'scale(1)';
+      });
+      
+      optionDiv.addEventListener('click', () => {
+        label.style.display = 'block';
+        
+        if (option.correct) {
+          optionDiv.style.border = '4px solid #4ECDC4';
+          optionDiv.style.background = 'rgba(78, 205, 196, 0.1)';
           
           setTimeout(() => {
             this.currentRound++;
-            this.renderRound();
-          }, 1500);
+            this.showRound();
+          }, 1200);
+        } else {
+          optionDiv.style.border = '4px solid #FF6B6B';
+          optionDiv.style.background = 'rgba(255, 107, 107, 0.1)';
+          
+          setTimeout(() => {
+            optionDiv.style.border = 'none';
+            optionDiv.style.background = 'white';
+            label.style.display = 'none';
+          }, 1200);
         }
       });
       
-      optionsDiv.appendChild(optionEl);
+      optionsDiv.appendChild(optionDiv);
     });
     
-    roundDiv.appendChild(optionsDiv);
-    this.puzzleDiv.appendChild(roundDiv);
-  }
-
-  getEmoji(word) {
-    const emojis = {
-      seil: '🪢',
-      eis: '🍦',
-      seife: '🧼',
-      ast: '🌿',
-      hase: '🐰',
-      nest: '🪺',
-      mango: '🥭',
-      mond: '🌙',
-      mantel: '🧥',
-      band: '🎀',
-      hand: '✋',
-      bank: '🏦'
-    };
-    return emojis[word.toLowerCase()] || '❓';
+    this.puzzleDiv.appendChild(optionsDiv);
   }
 }
