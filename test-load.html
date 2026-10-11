@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test Module Loading</title>
+</head>
+<body>
+  <h1>Testing Module Load</h1>
+  <div id="result"></div>
+  <script type="module">
+    try {
+      const { band1 } = await import('./books/band1.js');
+      document.getElementById('result').textContent = 'SUCCESS: ' + band1.title;
+      console.log('Band1 loaded:', band1);
+    } catch (err) {
+      document.getElementById('result').textContent = 'ERROR: ' + err.message;
+      console.error('Failed to load:', err);
+    }
+  </script>
+</body>
+</html>

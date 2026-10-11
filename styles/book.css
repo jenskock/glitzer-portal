@@ -1,0 +1,281 @@
+.book-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 2rem;
+  color: #667eea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+.book-spread {
+  display: flex;
+  gap: 2rem;
+  max-width: 95vw;
+  max-height: 85vh;
+  perspective: 1500px;
+}
+
+.page-wrapper {
+  flex: 1;
+  max-width: 45vw;
+  aspect-ratio: 3/4;
+  transform-style: preserve-3d;
+}
+
+.left-page-wrapper {
+  transform-origin: right center;
+}
+
+.right-page-wrapper {
+  transform-origin: left center;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  background: #FFF9F0;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  padding: 3rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.left-page-wrapper .page {
+  box-shadow: 
+    inset -5px 0 15px rgba(0, 0, 0, 0.1),
+    0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.right-page-wrapper .page {
+  box-shadow: 
+    inset 5px 0 15px rgba(0, 0, 0, 0.1),
+    0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.page-text {
+  font-family: 'Andika', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  line-height: 1.8;
+  color: #2d1e17;
+  max-width: 25em;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
+
+.page-illustration {
+  width: 100%;
+  height: 60%;
+  position: relative;
+  margin-top: auto;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #667eea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+
+.nav-button:hover:not(:disabled) {
+  background: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.prev-button {
+  left: 1rem;
+}
+
+.next-button {
+  right: 1rem;
+}
+
+/* Cover page */
+.cover-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--book-color, #4ECDC4) 0%, var(--book-color-light, #5DD9D1) 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../assets/characters/portal.svg') center center no-repeat;
+  background-size: 60%;
+  opacity: 0.15;
+}
+
+.cover-series {
+  font-family: 'Baloo2', cursive;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.cover-title {
+  font-family: 'Baloo2', cursive;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 1;
+  line-height: 1.3;
+  max-width: 80%;
+}
+
+.cover-subtitle {
+  font-family: 'Baloo2', cursive;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  margin-top: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+/* Story page */
+.story-scene {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.scene-illustration {
+  flex: 1;
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Puzzle page */
+.puzzle-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.puzzle-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.puzzle-title {
+  font-family: 'Baloo2', cursive;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: #4ECDC4;
+  margin-bottom: 0.5rem;
+}
+
+.puzzle-instruction {
+  font-family: 'Andika', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: #666;
+  line-height: 1.6;
+}
+
+.puzzle-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.praise-message {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(78, 205, 196, 0.95);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-family: 'Baloo2', cursive;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.praise-message.show {
+  opacity: 1;
+}
+
+.praise-character {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.praise-character img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

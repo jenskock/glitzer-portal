@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+<rect x="0" y="0" width="600" height="700" rx="40" fill="#eaf6ff"/>
+<circle cx="300.0" cy="294.0" r="240.0" fill="#cfe9ff"/>
+<ellipse cx="300.0" cy="642" rx="170" ry="22" fill="#000" opacity="0.12"/>
+<g stroke="#2d1e17" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+
+<path d="M240 360 Q140 250 120 170 Q200 190 262 320 Z" fill="#bfe8ff" opacity="0.95"/>
+<path d="M150 210 Q190 250 225 300 M135 180 Q180 210 245 330" fill="none" stroke="#7cc7ef" stroke-width="4"/>
+<path d="M95 190 q-15 20 0 40 M85 240 q-12 15 0 30" fill="none" stroke="#7cc7ef" stroke-width="5"/><g transform="translate(600,0) scale(-1,1)"><path d="M240 360 Q140 250 120 170 Q200 190 262 320 Z" fill="#bfe8ff" opacity="0.95"/>
+<path d="M150 210 Q190 250 225 300 M135 180 Q180 210 245 330" fill="none" stroke="#7cc7ef" stroke-width="4"/>
+<path d="M95 190 q-15 20 0 40 M85 240 q-12 15 0 30" fill="none" stroke="#7cc7ef" stroke-width="5"/></g>
+<!-- tail -->
+<path d="M270 500 L245 590 L285 570 L300 600 L315 570 L355 590 L330 500 Z" fill="#1f9a58"/>
+<path d="M285 520 v30 M315 520 v30" fill="none" stroke-width="4"/>
+<path d="M280 505 v40 M320 505 v40" fill="none" stroke="#3a2a1f" stroke-width="5"/>
+<ellipse cx="300" cy="420" rx="88" ry="110" fill="#2fbf71"/>
+<ellipse cx="300" cy="455" rx="55" ry="68" fill="#d9f7e2" stroke="none"/>
+<path d="M245 345 Q300 395 355 345 Q340 400 300 410 Q260 400 245 345 Z" fill="#e8306c"/>
+<!-- head -->
+<circle cx="300" cy="270" r="85" fill="#2fbf71"/>
+<path d="M240 220 Q300 190 360 220" fill="none" stroke="#1f9a58" stroke-width="8" opacity="0.6"/>
+<ellipse cx="262" cy="262" rx="14" ry="17" fill="#2d1e17"/>
+<circle cx="266.9" cy="255.2" r="5.88" fill="#fff" stroke="none"/>
+<circle cx="257.1" cy="269.65" r="2.52" fill="#fff" stroke="none"/><ellipse cx="338" cy="262" rx="14" ry="17" fill="#2d1e17"/>
+<circle cx="342.9" cy="255.2" r="5.88" fill="#fff" stroke="none"/>
+<circle cx="333.1" cy="269.65" r="2.52" fill="#fff" stroke="none"/>
+<!-- beak pointing down-forward, short-ish for cuteness -->
+<path d="M290 300 L300 395 L310 300 Z" fill="#3a2a1f"/>
+<ellipse cx="240" cy="300" rx="13" ry="8.450000000000001" fill="#ff7b9c" opacity="0.55" stroke="none"/>
+<ellipse cx="360" cy="300" rx="13" ry="8.450000000000001" fill="#ff7b9c" opacity="0.55" stroke="none"/>
+<path d="M290 190 q5 -30 18 -40 q0 25 -2 40" fill="#2fbf71"/>
+<!-- tiny feet -->
+<path d="M285 528 v14 M315 528 v14" fill="none" stroke="#3a2a1f" stroke-width="5"/>
+<!-- sparkles -->
+<path d="M470 150 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6 Z" fill="#ffd23f"/>
+<path d="M130 470 l5 11 11 5 -11 5 -5 11 -5 -11 -11 -5 11 -5 Z" fill="#ffd23f"/>
+
+</g></svg>

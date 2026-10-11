@@ -1,0 +1,12 @@
+{
+  "name": "glitzer-portal",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Interactive children's book web app for Das Glitzer-Portal",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}

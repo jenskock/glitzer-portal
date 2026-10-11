@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Das Glitzer-Portal</title>
+  <base href="./">
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/bookshelf.css">
+  <link rel="stylesheet" href="./styles/book.css">
+  <link rel="stylesheet" href="./styles/puzzles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Bookshelf view -->
+    <div id="bookshelf-view" class="view active">
+      <div class="bookshelf-container">
+        <h1 class="series-title">Das Glitzer-Portal</h1>
+        <div class="shelf">
+          <div id="books-container" class="books-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book view -->
+    <div id="book-view" class="view">
+      <div class="book-container">
+        <button id="close-book" class="close-button" aria-label="Zurück zum Bücherregal">×</button>
+        
+        <div class="book-spread">
+          <div class="page-wrapper left-page-wrapper">
+            <div id="left-page" class="page"></div>
+          </div>
+          <div class="page-wrapper right-page-wrapper">
+            <div id="right-page" class="page"></div>
+          </div>
+        </div>
+
+        <button id="prev-page" class="nav-button prev-button" aria-label="Vorherige Seite">
+          <svg viewBox="0 0 24 24" width="48" height="48">
+            <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+          </svg>
+        </button>
+        <button id="next-page" class="nav-button next-button" aria-label="Nächste Seite">
+          <svg viewBox="0 0 24 24" width="48" height="48">
+            <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1>Direct Load Test</h1>
+  <pre id="output"></pre>
+  <script>
+    window.addEventListener('error', (event) => {
+      const output = document.getElementById('output');
+      output.textContent += `ERROR: ${event.message}\n`;
+      output.textContent += `File: ${event.filename}\n`;
+      output.textContent += `Line: ${event.lineno}, Col: ${event.colno}\n`;
+      output.textContent += `\nStack: ${event.error ? event.error.stack : 'N/A'}\n`;
+    });
+  </script>
+  <script type="module">
+    try {
+      const mod = await import('./books/band1.js');
+      document.getElementById('output').textContent = 'SUCCESS!\n' + JSON.stringify(mod, null, 2).substring(0, 500);
+    } catch (err) {
+      document.getElementById('output').textContent += `\nCATCH: ${err.message}\n${err.stack}`;
+    }
+  </script>
+</body>
+</html>
