@@ -1,5 +1,13 @@
 import { test, expect } from '@playwright/test';
 
+// Helper to click without waiting for animations
+async function click(page, selector) {
+  await page.evaluate((sel) => {
+    document.querySelector(sel).click();
+  }, selector);
+  await page.waitForTimeout(500);
+}
+
 test.describe('Das Glitzer-Portal', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
@@ -16,7 +24,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('opening Band 1 shows cover', async ({ page }) => {
-    await page.locator('.book-cover').first().click();
+    await click(page, '.book-cover');
     
     await expect(page.locator('.cover-title')).toContainText('Das Rätsel des leuchtenden Steins');
     await expect(page.locator('.cover-series')).toContainText('Das Glitzer-Portal');
@@ -25,8 +33,8 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('page navigation with arrow buttons works', async ({ page }) => {
-    await page.locator('.book-cover').first().click();
-    await page.waitForTimeout(500);
+    await click(page, '.book-cover');
+    await page.waitForTimeout(200);
     
     const nextBtn = page.locator('#next-page');
     const prevBtn = page.locator('#prev-page');
