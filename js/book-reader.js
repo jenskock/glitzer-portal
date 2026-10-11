@@ -91,7 +91,7 @@ export class BookReader {
   }
 
   nextSpread() {
-    if (this.currentSpreadIndex < Math.ceil(this.book.pages.length / 2) - 1) {
+    if (this.currentSpreadIndex < this.book.pages.length - 1) {
       this.currentSpreadIndex++;
       this.renderCurrentSpread();
       this.savePage();
@@ -107,27 +107,26 @@ export class BookReader {
   }
 
   renderCurrentSpread() {
-    const leftPageIndex = this.currentSpreadIndex * 2;
-    const rightPageIndex = leftPageIndex + 1;
-    
-    const leftPage = this.book.pages[leftPageIndex];
-    const rightPage = rightPageIndex < this.book.pages.length ? this.book.pages[rightPageIndex] : null;
+    const currentPage = this.book.pages[this.currentSpreadIndex];
     
     this.leftPageEl.innerHTML = '';
     this.rightPageEl.innerHTML = '';
     this.rightPageEl.style.opacity = '1';
     
-    if (leftPage && leftPage.type === 'puzzle') {
+    if (!currentPage) return;
+    
+    if (currentPage.type === 'cover') {
+      // Cover spans both pages
+      renderPage(currentPage, this.leftPageEl, this.book, 'left');
+      this.rightPageEl.style.opacity = '0';
+    } else if (currentPage.type === 'story') {
+      // Story spreads show left half on left page, right half on right page
+      renderPage(currentPage, this.leftPageEl, this.book, 'left');
+      renderPage(currentPage, this.rightPageEl, this.book, 'right');
+    } else if (currentPage.type === 'puzzle') {
       // Puzzle spreads use both pages
-      renderPage(leftPage, this.leftPageEl, this.book, 'left', this.rightPageEl);
-    } else if (leftPage) {
-      renderPage(leftPage, this.leftPageEl, this.book, 'left');
-      
-      if (rightPage) {
-        renderPage(rightPage, this.rightPageEl, this.book, 'right');
-      } else {
-        this.rightPageEl.style.opacity = '0';
-      }
+      renderPage(currentPage, this.leftPageEl, this.book, 'left', this.rightPageEl);
+      this.rightPageEl.style.opacity = '1';
     }
     
     this.updateButtons();
@@ -135,7 +134,7 @@ export class BookReader {
 
   updateButtons() {
     this.prevButton.disabled = this.currentSpreadIndex === 0;
-    this.nextButton.disabled = this.currentSpreadIndex >= Math.ceil(this.book.pages.length / 2) - 1;
+    this.nextButton.disabled = this.currentSpreadIndex >= this.book.pages.length - 1;
   }
 
   cleanup() {
