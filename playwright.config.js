@@ -14,15 +14,6 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'iPad Pro Landscape',
-      use: { 
-        browserName: 'chromium',
-        viewport: { width: 1366, height: 1024 },
-        isMobile: true,
-        hasTouch: true,
-      },
-    },
-    {
       name: 'iPad Landscape',
       use: { 
         browserName: 'chromium',
@@ -32,7 +23,16 @@ export default defineConfig({
       },
     },
     {
-      name: 'iPad Portrait',
+      name: 'iPad Pro Landscape',
+      use: { 
+        browserName: 'chromium',
+        viewport: { width: 1366, height: 1024 },
+        isMobile: true,
+        hasTouch: true,
+      },
+    },
+    {
+      name: 'iPad Portrait Check',
       use: { 
         browserName: 'chromium',
         viewport: { width: 820, height: 1180 },

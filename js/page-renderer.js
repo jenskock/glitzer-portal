@@ -2,7 +2,7 @@ import { renderCoverPage } from './pages/cover.js';
 import { renderStoryPage } from './pages/story.js';
 import { renderPuzzlePage } from './pages/puzzle.js';
 
-export function renderPage(pageData, container, book, side) {
+export function renderPage(pageData, container, book, side, rightContainer = null) {
   container.innerHTML = '';
   
   switch (pageData.type) {
@@ -13,7 +13,7 @@ export function renderPage(pageData, container, book, side) {
       renderStoryPage(pageData, container, side);
       break;
     case 'puzzle':
-      renderPuzzlePage(pageData, container);
+      renderPuzzlePage(pageData, container, rightContainer);
       break;
     default:
       container.innerHTML = '<p>Unknown page type</p>';

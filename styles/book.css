@@ -202,12 +202,21 @@
   justify-content: center;
 }
 
-/* Puzzle page */
-.puzzle-page {
-  width: 100%;
+/* Puzzle page - spans both pages */
+.puzzle-page-left,
+.puzzle-page-right {
+  overflow: visible;
+}
+
+.puzzle-spread-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 3rem;
 }
 
 .puzzle-header {
