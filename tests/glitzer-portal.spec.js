@@ -8,7 +8,7 @@ test.describe('Das Glitzer-Portal', () => {
   test('bookshelf displays and Band 1 is clickable', async ({ page }) => {
     await expect(page.locator('h1')).toContainText('Das Glitzer-Portal');
     
-    const band1Spine = page.locator('.book-spine').first();
+    const band1Spine = page.locator('.book-cover').first();
     await expect(band1Spine).toBeVisible();
     await expect(band1Spine).toContainText('Das Rätsel des leuchtenden Steins');
     
@@ -16,7 +16,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('opening Band 1 shows cover', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     
     await expect(page.locator('.cover-title')).toContainText('Das Rätsel des leuchtenden Steins');
     await expect(page.locator('.cover-series')).toContainText('Das Glitzer-Portal');
@@ -25,7 +25,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('page navigation with arrow buttons works', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     const nextBtn = page.locator('#next-page');
@@ -43,7 +43,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('swipe navigation works', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     const spread = page.locator('.book-spread');
@@ -61,7 +61,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('localStorage remembers last page', async ({ page, context }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     await page.locator('#next-page').click();
@@ -78,7 +78,7 @@ test.describe('Das Glitzer-Portal', () => {
     await page.locator('#close-book').click();
     await page.waitForTimeout(300);
     
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     const prevBtn = page.locator('#prev-page');
@@ -86,7 +86,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('Puzzle 1: Suchbild can be solved', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     await page.locator('#next-page').click();
@@ -110,7 +110,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('Puzzle 2: Fehlerbild can be solved', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     for (let i = 0; i < 2; i++) {
@@ -135,7 +135,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('Puzzle 3: Anlaut B can be solved', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     for (let i = 0; i < 3; i++) {
@@ -160,7 +160,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('Puzzle 4: Capybara Steckbrief can be completed', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     for (let i = 0; i < 4; i++) {
@@ -192,7 +192,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('Puzzle 5: Labyrinth can be traced', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     for (let i = 0; i < 5; i++) {
@@ -225,7 +225,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('Puzzle 6: Quiz can be answered', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     for (let i = 0; i < 6; i++) {
@@ -250,7 +250,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('Puzzle 7: Memory can be played', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     for (let i = 0; i < 7; i++) {
@@ -278,7 +278,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('Puzzle 8: Ausmalbild can be colored', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     for (let i = 0; i < 8; i++) {
@@ -310,7 +310,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('Puzzle 9: Wort-zu-Bild can be matched', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     for (let i = 0; i < 9; i++) {
@@ -335,7 +335,7 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('Puzzle 10: Axolotl Steckbrief can be completed', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     for (let i = 0; i < 10; i++) {
@@ -367,14 +367,14 @@ test.describe('Das Glitzer-Portal', () => {
   });
 
   test('close button returns to bookshelf', async ({ page }) => {
-    await page.locator('.book-spine').first().click();
+    await page.locator('.book-cover').first().click();
     await page.waitForTimeout(500);
     
     await page.locator('#close-book').click();
     await page.waitForTimeout(500);
     
     await expect(page.locator('h1')).toContainText('Das Glitzer-Portal');
-    await expect(page.locator('.book-spine')).toBeVisible();
+    await expect(page.locator('.book-cover')).toBeVisible();
   });
 
   test('works with subpath (Pages deployment)', async ({ page }) => {
@@ -385,6 +385,6 @@ test.describe('Das Glitzer-Portal', () => {
 
   test('portrait mode check', async ({ page }) => {
     await expect(page.locator('h1')).toContainText('Das Glitzer-Portal');
-    await expect(page.locator('.book-spine')).toBeVisible();
+    await expect(page.locator('.book-cover')).toBeVisible();
   });
 });
