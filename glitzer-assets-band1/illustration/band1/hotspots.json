@@ -1,0 +1,122 @@
+{
+ "_note": "Alle Werte in Prozent. x = % der Bildbreite, y = % der Bildhöhe, r = Radius in % der Bildbreite. Bilder sind 16:9 (1280x720). Bei object-fit:cover-Zuschnitt in der App umrechnen.",
+ "p01-suchbild.jpg": {
+  "objects": [
+   {
+    "id": "schraubenschluessel-boot",
+    "label": "Schraubenschlüssel (am Bootsrand links)",
+    "x": 8.6,
+    "y": 62.2,
+    "r": 3.8
+   },
+   {
+    "id": "zahnrad",
+    "label": "Zahnrad (im schwimmenden Garten in der Mitte)",
+    "x": 60.5,
+    "y": 54.7,
+    "r": 3.2
+   },
+   {
+    "id": "gluehbirne",
+    "label": "Glühbirne (am Bootsbogen)",
+    "x": 26.4,
+    "y": 35.6,
+    "r": 3.0
+   },
+   {
+    "id": "lupe",
+    "label": "Lupe (auf einem Seerosenblatt)",
+    "x": 69.2,
+    "y": 77.5,
+    "r": 4.8
+   },
+   {
+    "id": "schraubenschluessel-schilf",
+    "label": "Schraubenschlüssel (im Schilf rechts)",
+    "x": 85.5,
+    "y": 81.5,
+    "r": 7.0
+   }
+  ],
+  "bonus": {
+   "id": "rudi-augen",
+   "label": "Rudis Augen im Schilf",
+   "x": 93.7,
+   "y": 60.7,
+   "r": 3.8
+  }
+ },
+ "p02-fehlerbild-b.jpg": {
+  "image_a": "p02-fehlerbild-a.jpg",
+  "differences": [
+   {
+    "id": 1,
+    "label": "Stern am Rucksack fehlt",
+    "x": 44.3,
+    "y": 66.7,
+    "r": 3.3
+   },
+   {
+    "id": 2,
+    "label": "Seerose gelb statt pink",
+    "x": 89.6,
+    "y": 71.0,
+    "r": 8.6
+   },
+   {
+    "id": 3,
+    "label": "Lottis Brille rot statt gelb",
+    "x": 15.9,
+    "y": 63.3,
+    "r": 6.6
+   },
+   {
+    "id": 4,
+    "label": "Leuchtpunkt am Steinbogen fehlt",
+    "x": 65.1,
+    "y": 25.8,
+    "r": 3.9
+   },
+   {
+    "id": 5,
+    "label": "Rudis Nase rosa statt schwarz",
+    "x": 41.4,
+    "y": 44.9,
+    "r": 2.4
+   }
+  ]
+ },
+ "p05-labyrinth.jpg": {
+  "_note": "Mitte ist eine leere hellgrüne Wiese; die App zeichnet das Labyrinth (richtiger Weg mit Bach + Trittsteinen, Sackgassen: Schlammpfütze, Dornenbusch, schlafender freundlicher Kaiman) als SVG/Canvas darüber.",
+  "start": {
+   "label": "Bruno, Lotti und Paula am Bach",
+   "x": 24.4,
+   "y": 71.0,
+   "r": 6.0
+  },
+  "goal": {
+   "label": "großer Baum oben rechts (Stammfuß)",
+   "x": 84.0,
+   "y": 38.0,
+   "r": 6.0
+  },
+  "meadow": {
+   "shape": "ellipse",
+   "cx": 48.8,
+   "cy": 46.0,
+   "rx": 37.0,
+   "ry": 37.0,
+   "_note": "sicherer Zeichenbereich für die Wege (ry in % der Höhe)"
+  },
+  "path_start_anchor": {
+   "x": 31.0,
+   "y": 64.0,
+   "_note": "Wiesenrand direkt rechts oberhalb der Gruppe, hier beginnt der gezeichnete Weg"
+  },
+  "path_goal_anchor": {
+   "x": 76.0,
+   "y": 36.0,
+   "_note": "Wiesenrand vor dem Baum, hier endet der richtige Weg"
+  }
+ }
+}

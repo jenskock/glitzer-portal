@@ -1,22 +1,27 @@
 export function renderStoryPage(pageData, container, side) {
-  container.className = 'page';
+  container.className = 'page story-page';
   
   const content = side === 'left' ? pageData.left : pageData.right;
   if (!content) return;
   
+  // Each spread has ONE 16:9 image spanning both pages
+  // We show the left half on left page, right half on right page
   const storyDiv = document.createElement('div');
   storyDiv.className = 'story-scene';
   
   const illustration = document.createElement('div');
   illustration.className = 'scene-illustration';
   
-  if (content.image) {
+  if (pageData.spreadImage) {
     const img = document.createElement('img');
-    img.src = content.image;
+    img.src = pageData.spreadImage;
     img.alt = 'Story illustration';
-    img.style.width = '100%';
+    img.className = 'spread-image';
+    img.style.width = '200%';
     img.style.height = '100%';
-    img.style.objectFit = 'contain';
+    img.style.objectFit = 'cover';
+    // Position image to show left or right half
+    img.style.objectPosition = side === 'left' ? '0% center' : '100% center';
     illustration.appendChild(img);
   }
   
