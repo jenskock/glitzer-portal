@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Andika';
+  src: url('../assets/fonts/Andika-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Andika';
+  src: url('../assets/fonts/Andika-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baloo2';
+  src: url('../assets/fonts/Baloo2.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Andika', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  touch-action: none;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.view.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+button {
+  font-family: 'Baloo2', cursive;
+  cursor: pointer;
+  border: none;
+  background: none;
+  touch-action: manipulation;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.hidden {
+  display: none !important;
+}
