@@ -1,0 +1,62 @@
+
+Running 18 tests using 2 workers
+
+(node:6859) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6858) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6858) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:6859) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [iPad Landscape] › tests/glitzer-portal.spec.js:8:3 › Das Glitzer-Portal › bookshelf displays and Band 1 is clickable (1.6s)
+  ✘   1 [iPad Landscape] › tests/glitzer-portal.spec.js:18:3 › Das Glitzer-Portal › opening Band 1 shows cover (30.3s)
+(node:7103) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7103) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 [iPad Landscape] › tests/glitzer-portal.spec.js:27:3 › Das Glitzer-Portal › page navigation with arrow buttons works (30.2s)
+(node:7205) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7205) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   4 [iPad Landscape] › tests/glitzer-portal.spec.js:45:3 › Das Glitzer-Portal › swipe navigation works (30.2s)
+(node:7310) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7310) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   5 [iPad Landscape] › tests/glitzer-portal.spec.js:63:3 › Das Glitzer-Portal › localStorage remembers last page (30.2s)
+(node:7414) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7414) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   6 [iPad Landscape] › tests/glitzer-portal.spec.js:88:3 › Das Glitzer-Portal › Puzzle 1: Suchbild can be solved (30.2s)
+(node:7522) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7522) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 [iPad Landscape] › tests/glitzer-portal.spec.js:112:3 › Das Glitzer-Portal › Puzzle 2: Fehlerbild can be solved (30.2s)
+(node:7626) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7626) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   8 [iPad Landscape] › tests/glitzer-portal.spec.js:137:3 › Das Glitzer-Portal › Puzzle 3: Anlaut B can be solved (30.2s)
+(node:7730) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7730) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   9 [iPad Landscape] › tests/glitzer-portal.spec.js:162:3 › Das Glitzer-Portal › Puzzle 4: Capybara Steckbrief can be completed (30.2s)
+(node:7838) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7838) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 [iPad Landscape] › tests/glitzer-portal.spec.js:194:3 › Das Glitzer-Portal › Puzzle 5: Labyrinth can be traced (30.2s)
+(node:7944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  11 [iPad Landscape] › tests/glitzer-portal.spec.js:227:3 › Das Glitzer-Portal › Puzzle 6: Quiz can be answered (30.2s)
+(node:8047) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8047) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

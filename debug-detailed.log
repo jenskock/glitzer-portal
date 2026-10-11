@@ -1,0 +1,19 @@
+
+Running 1 test using 1 worker
+
+(node:5381) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+(node:5381) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/1] [iPad Landscape] › tests/debug-detailed.spec.js:3:1 › detailed debug
+[iPad Landscape] › tests/debug-detailed.spec.js:3:1 › detailed debug
+
+=== Step 1: Bookshelf loaded ===
+
+
+=== Step 2: Clicking book cover ===
+
