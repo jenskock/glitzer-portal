@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" width="600" height="700">
+
+<ellipse cx="300.0" cy="642" rx="170" ry="22" fill="#000" opacity="0.12"/>
+<g stroke="#2d1e17" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+
+<path d="M262 560 v70 M248 640 l14 -12 14 12 M338 560 v70 M324 640 l14 -12 14 12" fill="none" stroke="#f08a24" stroke-width="10"/>
+<path d="M262 560 v70 M338 560 v70" fill="none" stroke="#2d1e17" stroke-width="3" opacity="0"/>
+<!-- wings -->
+<path d="M190 380 Q140 470 175 560 Q205 540 215 470 Z" fill="#23222b"/>
+<path d="M410 380 Q460 470 425 560 Q395 540 385 470 Z" fill="#23222b"/>
+<!-- tail -->
+<path d="M265 560 L255 625 L300 610 L345 625 L335 560 Z" fill="#23222b"/>
+<ellipse cx="300" cy="455" rx="120" ry="130" fill="#2f2e3a"/>
+<path d="M240 345 Q300 330 360 345 Q368 420 300 440 Q232 420 240 345 Z" fill="#fff4c2"/>
+<path d="M250 450 Q300 470 350 450 Q345 500 300 505 Q255 500 250 450 Z" fill="#e53b3b" stroke="none" opacity="0"/>
+
+<!-- head -->
+<circle cx="285" cy="235" r="100" fill="#2f2e3a"/>
+<path d="M215 270 Q260 320 330 300 Q300 340 250 330 Q215 310 215 270 Z" fill="#fff4c2" stroke="none"/>
+<circle cx="240" cy="210" r="27" fill="#4fb3ff"/><circle cx="315" cy="210" r="27" fill="#4fb3ff"/>
+<ellipse cx="240" cy="210" rx="13" ry="16" fill="#2d1e17"/>
+<circle cx="244.55" cy="203.6" r="5.46" fill="#fff" stroke="none"/>
+<circle cx="235.45" cy="217.2" r="2.34" fill="#fff" stroke="none"/><ellipse cx="315" cy="210" rx="13" ry="16" fill="#2d1e17"/>
+<circle cx="319.55" cy="203.6" r="5.46" fill="#fff" stroke="none"/>
+<circle cx="310.45" cy="217.2" r="2.34" fill="#fff" stroke="none"/>
+<!-- big banana beak to the side -->
+<path d="M318 238 Q420 200 505 240 Q515 270 478 285 Q400 305 322 292 Q300 265 318 238 Z" fill="#ffb21f"/>
+<path d="M455 228 Q500 232 508 250 Q512 272 480 284 Q470 255 455 228 Z" fill="#e53b3b"/>
+<path d="M318 238 Q340 232 352 230 Q345 265 355 296 L322 292 Q300 265 318 238 Z" fill="#4cc25a"/>
+<path d="M350 270 Q420 272 492 262" fill="none" stroke="#e07a00" stroke-width="5"/>
+<circle cx="338" cy="255" r="4" fill="#2d1e17" stroke="none"/>
+<path d="M258 140 q10 -30 28 -10 q10 -30 28 -5" fill="#2f2e3a"/>
+<ellipse cx="222" cy="262" rx="12" ry="7.800000000000001" fill="#ff7b9c" opacity="0.55" stroke="none"/>
+<ellipse cx="330" cy="262" rx="12" ry="7.800000000000001" fill="#ff7b9c" opacity="0.55" stroke="none"/>
+
+</g></svg>
