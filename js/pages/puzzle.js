@@ -70,7 +70,7 @@ export function renderPuzzlePage(pageData, leftContainer, rightContainer) {
   }
   
   if (puzzle) {
-    puzzle.onComplete = () => showPraise(pageData.praise, puzzleDiv);
+    puzzle.onComplete = () => showPraise(pageData.praise, puzzleWrapper);
   }
 }
 

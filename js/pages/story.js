@@ -1,5 +1,3 @@
-import { renderScene } from '../scenes/scene-renderer-v2.js';
-
 export function renderStoryPage(pageData, container, side) {
   container.className = 'page';
   
@@ -11,13 +9,26 @@ export function renderStoryPage(pageData, container, side) {
   
   const illustration = document.createElement('div');
   illustration.className = 'scene-illustration';
-  renderScene(content.scene, illustration);
+  
+  if (content.image) {
+    const img = document.createElement('img');
+    img.src = content.image;
+    img.alt = 'Story illustration';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'contain';
+    illustration.appendChild(img);
+  }
+  
+  const textContainer = document.createElement('div');
+  textContainer.className = 'page-text-container';
   
   const text = document.createElement('div');
   text.className = 'page-text';
   text.textContent = content.text;
   
+  textContainer.appendChild(text);
   storyDiv.appendChild(illustration);
-  storyDiv.appendChild(text);
+  storyDiv.appendChild(textContainer);
   container.appendChild(storyDiv);
 }

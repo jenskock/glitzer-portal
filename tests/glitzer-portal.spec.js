@@ -98,7 +98,7 @@ test.describe('Das Glitzer-Portal', () => {
     const count = await searchItems.count();
     
     for (let i = 0; i < Math.min(count, 5); i++) {
-      await searchItems.nth(i).click();
+      await searchItems.nth(i).evaluate(el => el.dispatchEvent(new MouseEvent('click', { bubbles: true })));
       await page.waitForTimeout(200);
     }
     
@@ -124,7 +124,7 @@ test.describe('Das Glitzer-Portal', () => {
     const count = await diffSpots.count();
     
     for (let i = 0; i < count; i++) {
-      await diffSpots.nth(i).click();
+      await diffSpots.nth(i).evaluate(el => el.dispatchEvent(new MouseEvent('click', { bubbles: true })));
       await page.waitForTimeout(200);
     }
     

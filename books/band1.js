@@ -18,11 +18,11 @@ export const band1 = {
       spread: 1,
       left: {
         text: 'Das ist Lotti, das Axolotl. Sie lebt in einem See in Mexiko. Dort fahren bunte Boote.',
-        scene: 'xochimilco-morning'
+        image: 'images/band1/s01-left.webp'
       },
       right: {
         text: 'Lotti tüftelt gern. Sie hat einen Rucksack. Daraus kommt immer das richtige Ding.',
-        scene: 'lotti-tinkering'
+        image: 'images/band1/s01-right.webp'
       }
     },
     {
@@ -30,16 +30,16 @@ export const band1 = {
       puzzleType: 'search',
       title: 'Suchbild',
       instruction: 'Lottis Tüftel-Sachen sind versteckt. Finde alle 5!',
-      items: [
-        { id: 'screw', name: 'Schraube', x: 15, y: 45 },
-        { id: 'gear', name: 'Zahnrad', x: 65, y: 30 },
-        { id: 'wrench', name: 'Schraubenschlüssel', x: 85, y: 60 },
-        { id: 'magnifier', name: 'Lupe', x: 35, y: 75 },
-        { id: 'bulb', name: 'Glühbirne', x: 50, y: 20 }
+      image: 'images/band1/p01-suchbild.webp',
+      hotspots: [
+        { id: 'screw', name: 'Schraube', x: 15, y: 45, radius: 5 },
+        { id: 'gear', name: 'Zahnrad', x: 65, y: 30, radius: 5 },
+        { id: 'wrench', name: 'Schraubenschlüssel', x: 85, y: 60, radius: 5 },
+        { id: 'magnifier', name: 'Lupe', x: 35, y: 75, radius: 5 },
+        { id: 'bulb', name: 'Glühbirne', x: 50, y: 20, radius: 5 }
       ],
-      bonus: { text: 'Wer schaut da aus dem Schilf?', target: 'rudi-eyes' },
-      praise: { character: 'lotti', text: 'Super! Du hast ja Adleraugen.' },
-      background: 'xochimilco-large'
+      bonus: { text: 'Wer schaut da aus dem Schilf?', x: 8, y: 65, radius: 5 },
+      praise: { character: 'lotti', text: 'Super! Du hast ja Adleraugen.' }
     },
     // Doppelseite 2 - Der Dieb
     {
@@ -47,11 +47,11 @@ export const band1 = {
       spread: 2,
       left: {
         text: 'Im Wasser glitzert es. Ein Strudel dreht sich. Da kommt Rudi, der Waschbär.',
-        scene: 'portal-appears'
+        image: 'images/band1/s02-left.webp'
       },
       right: {
         text: 'Er schnappt den Rucksack. "Hihi, das gehört jetzt mir!" Platsch! Rudi springt in den Strudel.',
-        scene: 'rudi-steals'
+        image: 'images/band1/s02-right.webp'
       }
     },
     {
@@ -59,15 +59,16 @@ export const band1 = {
       puzzleType: 'differences',
       title: 'Fehlerbild',
       instruction: 'Die zwei Bilder sind fast gleich. Finde 5 Fehler!',
-      differences: [
-        { id: 'tail', name: 'Schwanz', x: 25, y: 50, radius: 8 },
+      imageLeft: 'images/band1/p02-diff-left.webp',
+      imageRight: 'images/band1/p02-diff-right.webp',
+      hotspots: [
+        { id: 'tail', name: 'Schwanz', x: 75, y: 50, radius: 8 },
         { id: 'star', name: 'Stern', x: 55, y: 35, radius: 6 },
         { id: 'lily', name: 'Seerose', x: 70, y: 70, radius: 7 },
         { id: 'glasses', name: 'Brille', x: 82, y: 45, radius: 5 },
-        { id: 'portal-star', name: 'Glitzerstern', x: 40, y: 25, radius: 5 }
+        { id: 'portal-star', name: 'Glitzerstern', x: 90, y: 25, radius: 5 }
       ],
-      praise: { character: 'lotti', text: 'Toll gemacht! Du bist ein Fehler-Profi.' },
-      scene: 'rudi-at-portal'
+      praise: { character: 'lotti', text: 'Toll gemacht! Du bist ein Fehler-Profi.' }
     },
     // Doppelseite 3 - Durch das Portal
     {
@@ -75,11 +76,11 @@ export const band1 = {
       spread: 3,
       left: {
         text: 'Lotti hat ein bisschen Angst. Aber sie ist mutig. Sie schwimmt in den Strudel.',
-        scene: 'lotti-brave'
+        image: 'images/band1/s03-left.webp'
       },
       right: {
         text: 'Wusch! Alles dreht sich. Jetzt ist Lotti im Regenwald, in Südamerika.',
-        scene: 'rainforest-arrival'
+        image: 'images/band1/s03-right.webp'
       }
     },
     {
@@ -106,11 +107,11 @@ export const band1 = {
       spread: 4,
       left: {
         text: 'Im Fluss schwimmt ein Tier. Man sieht nur Augen, Ohren und Nase.',
-        scene: 'bruno-swimming'
+        image: 'images/band1/s04-left.webp'
       },
       right: {
         text: 'Das ist Bruno, das Capybara. "Keine Angst", sagt er. "Ich bin ja da!"',
-        scene: 'bruno-appears'
+        image: 'images/band1/s04-right.webp'
       }
     },
     {
@@ -143,11 +144,11 @@ export const band1 = {
       spread: 5,
       left: {
         text: 'Lotti erzählt von Rudi. Da kommt Paula. "Ich weiß einen Weg!", ruft sie.',
-        scene: 'paula-arrives'
+        image: 'images/band1/s05-left.webp'
       },
       right: {
         text: 'Oben fliegt Tuko, der Tukan. "Ich hab\'s gesehen!", ruft er. "Rudi ist beim großen Baum."',
-        scene: 'tuko-flies'
+        image: 'images/band1/s05-right.webp'
       }
     },
     {
@@ -175,11 +176,11 @@ export const band1 = {
       spread: 6,
       left: {
         text: 'Paula rutscht auf einem Stein aus. Bruno fängt sie auf. Bruno ist stark.',
-        scene: 'bruno-catches'
+        image: 'images/band1/s06-left.webp'
       },
       right: {
         text: 'Am Ast hängt Momo, das Faultier. Momo spricht ganz langsam: "Rudi ... ist ... oben."',
-        scene: 'momo-hanging'
+        image: 'images/band1/s06-right.webp'
       }
     },
     {
@@ -228,11 +229,11 @@ export const band1 = {
       spread: 7,
       left: {
         text: 'Fips, der Kolibri, saust nach oben. Er kann sogar rückwärts fliegen.',
-        scene: 'fips-flies'
+        image: 'images/band1/s07-left.webp'
       },
       right: {
         text: 'Oben sitzt Rudi mit dem Rucksack. "Hihi!" Er klettert auf einen Ast über dem Fluss.',
-        scene: 'rudi-in-tree'
+        image: 'images/band1/s07-right.webp'
       }
     },
     {
@@ -250,11 +251,11 @@ export const band1 = {
       spread: 8,
       left: {
         text: 'Krach! Der Ast bricht. Rudi und der Rucksack fallen in den Fluss.',
-        scene: 'branch-breaks'
+        image: 'images/band1/s08-left.webp'
       },
       right: {
         text: 'Der Fluss ist schnell. "Hilfe!", ruft Rudi. Bruno springt sofort ins Wasser.',
-        scene: 'bruno-rescues'
+        image: 'images/band1/s08-right.webp'
       }
     },
     {
@@ -262,18 +263,19 @@ export const band1 = {
       puzzleType: 'coloring',
       title: 'Ausmalbild',
       instruction: 'Male das Bild bunt aus! Tippe auf eine Farbe und dann auf das Bild.',
+      image: 'images/band1/p08-coloring.webp',
       colors: [
         '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
         '#DDA15E', '#BC6C25', '#8B4513', '#228B22', '#FFB6C1'
       ],
-      regions: [
-        { id: 'bruno', name: 'Bruno' },
-        { id: 'fips', name: 'Fips' },
-        { id: 'lily1', name: 'Seerose 1' },
-        { id: 'lily2', name: 'Seerose 2' },
-        { id: 'fish1', name: 'Fisch 1' },
-        { id: 'fish2', name: 'Fisch 2' },
-        { id: 'reeds', name: 'Schilf' }
+      hotspots: [
+        { id: 'bruno', name: 'Bruno', x: 40, y: 45, radius: 12 },
+        { id: 'fips', name: 'Fips', x: 70, y: 25, radius: 8 },
+        { id: 'lily1', name: 'Seerose 1', x: 25, y: 65, radius: 8 },
+        { id: 'lily2', name: 'Seerose 2', x: 60, y: 70, radius: 8 },
+        { id: 'fish1', name: 'Fisch 1', x: 50, y: 55, radius: 6 },
+        { id: 'fish2', name: 'Fisch 2', x: 15, y: 50, radius: 5 },
+        { id: 'reeds', name: 'Schilf', x: 90, y: 60, radius: 10 }
       ],
       praise: { character: 'bruno', text: 'Wow, so schöne Farben!' }
     },
@@ -283,11 +285,11 @@ export const band1 = {
       spread: 9,
       left: {
         text: 'Lotti taucht nach dem Rucksack. Sie hat Kiemen. Sie kann unter Wasser atmen.',
-        scene: 'lotti-dives'
+        image: 'images/band1/s09-left.webp'
       },
       right: {
         text: 'Lotti greift in den Rucksack. Heraus kommt ein Seil! Bruno zieht Rudi an Land.',
-        scene: 'rope-rescue'
+        image: 'images/band1/s09-right.webp'
       }
     },
     {
@@ -309,11 +311,11 @@ export const band1 = {
       spread: 10,
       left: {
         text: '"Tut mir leid", sagt Rudi. Er gibt alles zurück. Jetzt sind alle Freunde.',
-        scene: 'friends'
+        image: 'images/band1/s10-left.webp'
       },
       right: {
         text: 'Am Portal leuchtet ein Stein. Darauf sind ein Axolotl und ein Capybara. Wer hat das gemacht?',
-        scene: 'mystery-stone'
+        image: 'images/band1/s10-right.webp'
       }
     },
     {
