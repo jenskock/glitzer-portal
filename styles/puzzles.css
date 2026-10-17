@@ -311,6 +311,35 @@
   background: #ffe8e8;
 }
 
+.comprehension-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  pointer-events: auto;
+}
+
+.comprehension-label {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e07a3d;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.comprehension-quiz {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+}
+
 /* Maze puzzle */
 .maze-puzzle {
   position: relative;

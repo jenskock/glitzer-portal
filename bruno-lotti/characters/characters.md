@@ -10,7 +10,7 @@ Stil: bunt und comichaft, dicke dunkelbraune Umrisslinie, flache Farben, große 
 - **Spruch/Marotte:** „Keine Angst, ich bin ja da!“ – wenn er nachdenkt, kaut er auf einem Grashalm.
 
 ## Lotti – das Axolotl (Heldin)
-- **Tierart:** Axolotl, wohnt in einem See in Mexiko (Xochimilco)
+- **Tierart:** Axolotl, wohnt in Blumenstadt in Mexiko (Kanalstadt mit schwimmenden Gärten)
 - **Eigenschaften:** schlau, neugierig, tüftelt gern, gibt nie auf
 - **Aussehen:** rosa, mit pinken Kiemen-Büscheln (je drei pro Seite), breites Lächeln, **gelbe Tüftel-Brille auf der Stirn**, **türkiser Tüftel-Rucksack** mit braunen Gurten, aus dem ein Schraubenschlüssel und ein Stern schauen
 - **Spruch/Marotte:** „Moment, ich hab da was!“ – dann greift sie in den Rucksack, und genau das passende Ding kommt heraus. Wenn sie sich freut, wackeln ihre Kiemen.

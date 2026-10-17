@@ -70,7 +70,8 @@ export class WordImagePuzzle {
       img.alt = option.name;
       img.style.width = '100%';
       img.style.height = '220px';
-      img.style.objectFit = 'cover';
+      img.style.objectFit = 'contain';
+      img.style.background = '#f7f7f7';
       img.style.display = 'block';
       optionDiv.appendChild(img);
       

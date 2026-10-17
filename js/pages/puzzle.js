@@ -79,7 +79,19 @@ export function renderPuzzlePage(pageData, leftContainer, rightContainer) {
   }
   
   if (puzzle) {
-    puzzle.onComplete = () => showPraise(pageData.praise, puzzleWrapper);
+    let settled = false;
+    puzzle.onComplete = () => {
+      if (settled) return;
+      settled = true;
+      const questions = pageData.comprehension;
+      if (questions && questions.length > 0) {
+        showComprehension(questions, puzzleWrapper, content, () => {
+          showPraise(pageData.praise, puzzleWrapper);
+        });
+      } else {
+        showPraise(pageData.praise, puzzleWrapper);
+      }
+    };
   }
 }
 
@@ -95,6 +107,75 @@ function createHintToggle(content) {
     button.textContent = visible ? 'Tipp verstecken' : 'Tipp zeigen';
   });
   return button;
+}
+
+function showComprehension(questions, wrapper, content, onDone) {
+  let index = 0;
+
+  wrapper.querySelectorAll('.comprehension-overlay').forEach((el) => el.remove());
+
+  const overlay = document.createElement('div');
+  overlay.className = 'comprehension-overlay';
+
+  const panel = document.createElement('div');
+  panel.className = 'fact-quiz comprehension-quiz';
+  overlay.appendChild(panel);
+  wrapper.appendChild(overlay);
+
+  function renderQuestion() {
+    panel.innerHTML = '';
+
+    if (index >= questions.length) {
+      overlay.remove();
+      onDone();
+      return;
+    }
+
+    const q = questions[index];
+
+    const label = document.createElement('div');
+    label.className = 'comprehension-label';
+    label.textContent = 'Was hast du gelesen?';
+    panel.appendChild(label);
+
+    const question = document.createElement('div');
+    question.className = 'fact-quiz-question';
+    question.textContent = q.question;
+    panel.appendChild(question);
+
+    const options = document.createElement('div');
+    options.className = 'fact-quiz-options';
+
+    q.options.forEach((optionText, optionIndex) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'fact-quiz-option';
+      btn.textContent = optionText;
+      btn.addEventListener('click', () => {
+        if (btn.disabled) return;
+        const correct = optionIndex === q.correct;
+        btn.classList.add(correct ? 'correct' : 'incorrect');
+        if (correct) {
+          options.querySelectorAll('button').forEach((b) => { b.disabled = true; });
+          setTimeout(() => {
+            index += 1;
+            renderQuestion();
+          }, 700);
+        } else {
+          setTimeout(() => {
+            btn.classList.remove('incorrect');
+          }, 700);
+        }
+      });
+      options.appendChild(btn);
+    });
+
+    panel.appendChild(options);
+  }
+
+  // Hide finished puzzle visuals while answering
+  content.style.visibility = 'hidden';
+  renderQuestion();
 }
 
 function showPraise(praise, container) {

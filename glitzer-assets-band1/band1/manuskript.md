@@ -14,11 +14,11 @@ Aufbau jeder Story-Doppelseite: **Links** = Text der linken Buchseite, **Rechts*
 
 **Rechts:** Lotti tüftelt gern. Heute baut sie eine kleine Wassermühle. Neben ihr liegt ihr türkiser Rucksack. Daraus kommt immer das richtige Ding. Lotti sagt nur: „Moment, ich hab da was!“ Und schon greift sie hinein. Im Schilf raschelt es leise. Aber Lotti merkt nichts.
 
-**Bild:** Sonniger Morgen in Xochimilco, warmes goldenes Licht, klarer blauer Himmel. **Links:** Breiter Kanal mit zwei bunten Holzbooten (Trajineras) mit bemalten Bögen in Rot, Gelb und Blau; dahinter schwimmende Gärten (Chinampas) mit Ringelblumen, Mais und Salat; pinke Seerosen im Vordergrund. Lotti (rosa Axolotl, pinke Kiemen-Büschel, je drei pro Seite, gelbe Tüftel-Brille auf der Stirn) winkt einem Boot zu, ihre Kiemen wackeln fröhlich (kleine Bewegungslinien). **Rechts:** Lotti sitzt auf einem großen Seerosenblatt und schraubt mit einem Schraubenschlüssel an einer kleinen Holz-Wassermühle, die Brille jetzt auf der Nase. Neben ihr der türkise Tüftel-Rucksack mit braunen Gurten, aus dem ein Schraubenschlüssel und ein Stern schauen. Am rechten Rand im Schilf, kaum sichtbar, zwei Augen mit schwarzer Maske und weißen Augenbrauen (Rudi). Stimmung: fröhlich, friedlich, sonnig. Textfläche: oben links und oben rechts über dem Himmel frei lassen.
+**Bild:** Sonniger Morgen in Blumenstadt, warmes goldenes Licht, klarer blauer Himmel. **Links:** Breiter Kanal mit zwei bunten Holzbooten (Trajineras) mit bemalten Bögen in Rot, Gelb und Blau; dahinter schwimmende Gärten (Chinampas) mit Ringelblumen, Mais und Salat; pinke Seerosen im Vordergrund. Lotti (rosa Axolotl, pinke Kiemen-Büschel, je drei pro Seite, gelbe Tüftel-Brille auf der Stirn) winkt einem Boot zu, ihre Kiemen wackeln fröhlich (kleine Bewegungslinien). **Rechts:** Lotti sitzt auf einem großen Seerosenblatt und schraubt mit einem Schraubenschlüssel an einer kleinen Holz-Wassermühle, die Brille jetzt auf der Nase. Neben ihr der türkise Tüftel-Rucksack mit braunen Gurten, aus dem ein Schraubenschlüssel und ein Stern schauen. Am rechten Rand im Schilf, kaum sichtbar, zwei Augen mit schwarzer Maske und weißen Augenbrauen (Rudi). Stimmung: fröhlich, friedlich, sonnig. Textfläche: oben links und oben rechts über dem Himmel frei lassen.
 
 ### Überraschung 1 – Suchbild
 - **Anweisung:** Lottis Tüftel-Sachen sind versteckt. Finde alle 5!
-- **Inhalt:** Dasselbe Xochimilco-Bild, etwas größer. Versteckt sind: 1. eine Schraube (am Bootsrand), 2. ein Zahnrad (zwischen den Blumen eines schwimmenden Gartens), 3. ein Schraubenschlüssel (im Schilf), 4. eine Lupe (unter einem Seerosenblatt), 5. eine Glühbirne (an einem Bootsbogen). Bonus: „Wer schaut da aus dem Schilf?“ – Rudis Augen antippen.
+- **Inhalt:** Dasselbe Blumenstadt-Bild, etwas größer. Versteckt sind: 1. eine Schraube (am Bootsrand), 2. ein Zahnrad (zwischen den Blumen eines schwimmenden Gartens), 3. ein Schraubenschlüssel (im Schilf), 4. eine Lupe (unter einem Seerosenblatt), 5. eine Glühbirne (an einem Bootsbogen). Bonus: „Wer schaut da aus dem Schilf?“ – Rudis Augen antippen.
 - **Lob (Lotti):** Super! Du hast ja Adleraugen.
 
 ---
@@ -181,8 +181,8 @@ Aufbau jeder Story-Doppelseite: **Links** = Text der linken Buchseite, **Rechts*
 ---
 
 ## Echte Fakten in Band 1
-- **Xochimilco (Mexiko):** Kanäle bei Mexiko-Stadt mit bunten Booten (Trajineras) und „schwimmenden Gärten“ (Chinampas).
-- **Axolotl:** Lebt wild nur in Mexiko (Xochimilco), behält sein Leben lang die Kiemen außen am Kopf, kann Beine und Schwanz nachwachsen lassen, in der Natur meist dunkel (rosa ist selten), frisst Würmer und Kleinkrebse, ist stark gefährdet.
+- **Blumenstadt (Mexiko):** In der Geschichte Lottis Heimat – Kanalstadt mit bunten Booten (Trajineras) und schwimmenden Gärten. Vorbild: echte Kanäle bei Mexiko-Stadt.
+- **Axolotl:** Lebt wild nur in Mexiko (Kanäle bei Mexiko-Stadt), behält sein Leben lang die Kiemen außen am Kopf, kann Beine und Schwanz nachwachsen lassen, in der Natur meist dunkel (rosa ist selten), frisst Würmer und Kleinkrebse, ist stark gefährdet.
 - **Capybara:** Größtes Nagetier der Welt, lebt in Südamerika, Augen, Ohren und Nase sitzen oben am Kopf (sieht beim Schwimmen nur diese), Schwimmhäute, kann bis etwa 5 Minuten tauchen, frisst Gras und Wasserpflanzen, lebt in Gruppen.
 - **Tukan:** Großer, aber leichter Schnabel (Horn mit Luftkammern), frisst vor allem Früchte, lebt in Mittel- und Südamerika.
 - **Faultier (Dreifinger-Faultier wie Momo):** Bewegt sich sehr langsam, hängt kopfüber, im Fell wachsen winzige Algen und machen es grünlich.

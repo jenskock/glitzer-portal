@@ -3,6 +3,7 @@ export class InitialSoundsPuzzle {
     this.data = data;
     this.container = container;
     this.completed = new Set();
+    this.finished = false;
     this.onComplete = null;
     
     this.render();
@@ -80,7 +81,8 @@ export class InitialSoundsPuzzle {
             i.correct && this.completed.has(i.id)
           ).length;
           
-          if (foundCorrect === correctCount) {
+          if (foundCorrect === correctCount && !this.finished) {
+            this.finished = true;
             setTimeout(() => {
               if (this.onComplete) this.onComplete();
             }, 500);
