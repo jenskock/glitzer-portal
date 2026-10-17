@@ -1,0 +1,30 @@
+{
+  "_note": "Prozentwerte für Band 2. x/y = Position in % der Bildbreite/-höhe, r = Radius in % der Bildbreite.",
+  "p01-suchbild.webp": {
+    "objects": [
+      { "id": "halstuch", "label": "Halstuch im Gras rechts unten", "x": 84, "y": 78, "r": 5.5 },
+      { "id": "grashalm", "label": "Grashalm auf dem Stein links unten", "x": 14, "y": 88, "r": 5 },
+      { "id": "banane", "label": "Banane unten Mitte", "x": 58, "y": 84, "r": 5 },
+      { "id": "muschel", "label": "Muschel unten", "x": 36, "y": 90, "r": 4.5 },
+      { "id": "glitzerstern", "label": "Glitzerstern am Portal", "x": 54, "y": 34, "r": 4.5 }
+    ],
+    "bonus": { "id": "paula", "label": "Paula winkt", "x": 71, "y": 36, "r": 5 }
+  },
+  "p05-fehlerbild-b.webp": {
+    "image_a": "p05-fehlerbild-a.webp",
+    "differences": [
+      { "id": "halstuch", "label": "Halstuch fehlt", "x": 45, "y": 49, "r": 6 },
+      { "id": "blume", "label": "Blume blau statt warm", "x": 48, "y": 16, "r": 5.5 },
+      { "id": "loeffel", "label": "Löffel silbern", "x": 72, "y": 40, "r": 5.5 },
+      { "id": "fisch", "label": "Fisch fehlt", "x": 82, "y": 84, "r": 6 },
+      { "id": "brille", "label": "Brille andere Farbe", "x": 27, "y": 36, "r": 5.5 }
+    ]
+  },
+  "p08-labyrinth.webp": {
+    "start": { "x": 22, "y": 74, "r": 6 },
+    "goal": { "x": 82, "y": 28, "r": 6 },
+    "meadow": { "cx": 50, "cy": 48, "rx": 38, "ry": 36 },
+    "pathStart": { "x": 28, "y": 68 },
+    "pathGoal": { "x": 76, "y": 30 }
+  }
+}

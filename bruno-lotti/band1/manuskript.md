@@ -12,11 +12,11 @@ Umfang: 10 Story-Doppelseiten (20 Seiten) + 10 Überraschungs-Doppelseiten.
 
 **Rechts:** Lotti tüftelt gern. Sie hat einen Rucksack. Daraus kommt immer das richtige Ding.
 
-**Bild:** Ein sonniger Morgen in Xochimilco: Kanäle, bunte Holzboote (Trajineras) mit bemalten Bögen, schwimmende Gärten (Chinampas) mit Blumen und Gemüse. Lotti sitzt auf einem Seerosenblatt und schraubt an einer kleinen Wassermühle, die Brille auf der Stirn, der Rucksack daneben. Im Schilf sind kaum sichtbar zwei Augen mit schwarzer Maske zu sehen (Rudi). Stimmung: fröhlich, friedlich.
+**Bild:** Ein sonniger Morgen in Blumenstadt: Kanäle, bunte Holzboote (Trajineras) mit bemalten Bögen, schwimmende Gärten (Chinampas) mit Blumen und Gemüse. Lotti sitzt auf einem Seerosenblatt und schraubt an einer kleinen Wassermühle, die Brille auf der Stirn, der Rucksack daneben. Im Schilf sind kaum sichtbar zwei Augen mit schwarzer Maske zu sehen (Rudi). Stimmung: fröhlich, friedlich.
 
 ### Überraschung 1 – Suchbild
 - **Anweisung:** Lottis Tüftel-Sachen sind versteckt. Finde alle 5!
-- **Inhalt:** Dasselbe Xochimilco-Bild, etwas größer. Versteckt sind: 1. eine Schraube (am Bootsrand), 2. ein Zahnrad (zwischen den Blumen eines schwimmenden Gartens), 3. ein Schraubenschlüssel (im Schilf), 4. eine Lupe (unter einem Seerosenblatt), 5. eine Glühbirne (an einem Bootsbogen). Bonus: „Wer schaut da aus dem Schilf?“ – Rudis Augen antippen.
+- **Inhalt:** Dasselbe Blumenstadt-Bild, etwas größer. Versteckt sind: 1. eine Schraube (am Bootsrand), 2. ein Zahnrad (zwischen den Blumen eines schwimmenden Gartens), 3. ein Schraubenschlüssel (im Schilf), 4. eine Lupe (unter einem Seerosenblatt), 5. eine Glühbirne (an einem Bootsbogen). Bonus: „Wer schaut da aus dem Schilf?“ – Rudis Augen antippen.
 - **Lob (Lotti):** Super! Du hast ja Adleraugen.
 
 ---
@@ -179,8 +179,8 @@ Umfang: 10 Story-Doppelseiten (20 Seiten) + 10 Überraschungs-Doppelseiten.
 ---
 
 ## Echte Fakten in Band 1
-- **Xochimilco (Mexiko):** Kanäle bei Mexiko-Stadt mit bunten Booten (Trajineras) und „schwimmenden Gärten“ (Chinampas).
-- **Axolotl:** Lebt wild nur in Mexiko (Xochimilco), behält sein Leben lang die Kiemen außen am Kopf, kann Beine und Schwanz nachwachsen lassen, in der Natur meist dunkel (rosa ist selten), frisst Würmer und Kleinkrebse, ist stark gefährdet.
+- **Blumenstadt (Mexiko):** In der Geschichte Lottis Heimat – Kanalstadt mit bunten Booten (Trajineras) und schwimmenden Gärten. Vorbild: echte Kanäle bei Mexiko-Stadt.
+- **Axolotl:** Lebt wild nur in Mexiko (Kanäle bei Mexiko-Stadt), behält sein Leben lang die Kiemen außen am Kopf, kann Beine und Schwanz nachwachsen lassen, in der Natur meist dunkel (rosa ist selten), frisst Würmer und Kleinkrebse, ist stark gefährdet.
 - **Capybara:** Größtes Nagetier der Welt, lebt in Südamerika, Augen, Ohren und Nase sitzen oben am Kopf (sieht beim Schwimmen nur diese), Schwimmhäute, kann bis etwa 5 Minuten tauchen, frisst Gras und Wasserpflanzen, lebt in Gruppen.
 - **Tukan:** Großer, aber leichter Schnabel (Horn mit Luftkammern), frisst vor allem Früchte, lebt in Mittel- und Südamerika.
 - **Faultier (Dreifinger-Faultier wie Momo):** Bewegt sich sehr langsam, hängt kopfüber, im Fell wachsen winzige Algen und machen es grünlich.
