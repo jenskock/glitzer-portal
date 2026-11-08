@@ -1,0 +1,38 @@
+{
+  "p01-suchbild.webp": {
+    "objects": [
+      { "id": "tasche", "label": "Stofftasche unter der Bank", "x": 14, "y": 86, "r": 6 },
+      { "id": "grashalm", "label": "Grashalm neben dem Bootspfosten", "x": 46, "y": 78, "r": 5 },
+      { "id": "muschel", "label": "Muschel zwischen zwei Steinen", "x": 70, "y": 81, "r": 5 },
+      { "id": "blatt", "label": "Blatt auf dem Bootsrand", "x": 87, "y": 58, "r": 5 },
+      { "id": "bluete", "label": "Gelbe Blüte im Schilf", "x": 94, "y": 75, "r": 5 }
+    ],
+    "bonus": { "id": "milo", "label": "Milos Kopf im Schilf", "x": 10, "y": 43, "r": 6 }
+  },
+  "p05-fehlerbild-b.webp": {
+    "image_a": "p05-fehlerbild-a.webp",
+    "differences": [
+      { "id": "halstuch", "label": "Brunos Halstuch fehlt", "x": 17, "y": 61, "r": 6 },
+      { "id": "brille", "label": "Lottis Brille ist rot", "x": 33, "y": 53, "r": 5.5 },
+      { "id": "loeffel", "label": "Rudis Löffel ist silbern", "x": 73, "y": 46, "r": 5.5 },
+      { "id": "blume", "label": "Topfblume ist blau", "x": 67, "y": 59, "r": 5.5 },
+      { "id": "rad", "label": "Schubkarrenrad fehlt", "x": 75, "y": 88, "r": 6 }
+    ]
+  },
+  "p08-labyrinth.webp": {
+    "start": { "x": 12, "y": 79, "r": 6 },
+    "goal": { "x": 88, "y": 14, "r": 6 },
+    "route": [
+      { "id": "start", "x": 12, "y": 79 },
+      { "id": "a", "x": 21, "y": 50 },
+      { "id": "b", "x": 40, "y": 34 },
+      { "id": "c", "x": 80, "y": 16 },
+      { "id": "goal", "x": 88, "y": 14 }
+    ],
+    "deadEnds": [
+      { "id": "busch", "x": 40, "y": 12 },
+      { "id": "zaun", "x": 78, "y": 56 },
+      { "id": "beet", "x": 70, "y": 31 }
+    ]
+  }
+}

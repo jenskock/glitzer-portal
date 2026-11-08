@@ -1,4 +1,5 @@
 import { bindArtRatio } from './art-frame.js';
+import { fixedHotspots } from '../choice-order.js';
 
 export class SearchPuzzle {
   constructor(data, container) {
@@ -21,8 +22,8 @@ export class SearchPuzzle {
     puzzleDiv.appendChild(img);
     bindArtRatio(puzzleDiv, img);
     
-    // Add hotspots
-    this.data.hotspots.forEach(hotspot => {
+    // Hotspots stay on the painted picture. They are never shuffled like answer cards.
+    fixedHotspots(this.data.hotspots).forEach(hotspot => {
       const spot = document.createElement('div');
       spot.className = 'search-item';
       const radius = hotspot.r ?? hotspot.radius;

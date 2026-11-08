@@ -138,7 +138,7 @@ export class BookReader {
     } else if (currentPage.type === 'puzzle') {
       // Puzzle spreads use both pages as one playfield
       this.bookSpread.classList.add('book-spread--puzzle');
-      renderPage(currentPage, this.leftPageEl, this.book, 'left', this.rightPageEl);
+      renderPage(currentPage, this.leftPageEl, this.book, 'left', this.rightPageEl, this.currentSpreadIndex);
       this.rightPageEl.style.opacity = '1';
     }
     

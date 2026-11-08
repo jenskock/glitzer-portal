@@ -217,10 +217,24 @@
 .scene-illustration {
   flex: 0 0 55%;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
+}
+
+.spread-image {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 200%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.spread-image--left {
+  left: 0;
+}
+
+.spread-image--right {
+  left: -100%;
 }
 
 .page-text-container {

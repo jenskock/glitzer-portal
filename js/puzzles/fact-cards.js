@@ -1,11 +1,19 @@
+import { createChoiceSession } from '../choice-order.js';
+import { clearHint, mountFeedback, mountRetry, showWrongHint } from '../choice-controls.js';
+
 export class FactCardsPuzzle {
-  constructor(data, container) {
+  constructor(data, container, context = {}) {
     this.data = data;
     this.container = container;
     this.revealed = new Set();
     this.quizAnswered = false;
     this.onComplete = null;
-    
+    this.session = createChoiceSession({
+      bookId: context.bookId || 'book',
+      puzzleKey: `${context.puzzleKey || 'fact-cards'}:profile`,
+      rawQuestions: [data.quiz],
+      scope: `${context.puzzleKey || 'fact-cards'}:profile`,
+    });
     this.render();
   }
 
@@ -128,10 +136,13 @@ export class FactCardsPuzzle {
     options.style.flexDirection = 'column';
     options.style.gap = '10px';
     
-    this.data.quiz.options.forEach((option, index) => {
+    const displayed = this.session.display();
+    displayed.forEach((option) => {
       const btn = document.createElement('button');
+      btn.type = 'button';
       btn.className = 'fact-quiz-option';
-      btn.textContent = option;
+      btn.dataset.answerId = option.answerId;
+      btn.textContent = option.label;
       btn.style.padding = '15px 25px';
       btn.style.fontSize = '1.2rem';
       btn.style.fontFamily = 'Andika, sans-serif';
@@ -140,44 +151,55 @@ export class FactCardsPuzzle {
       btn.style.background = 'white';
       btn.style.cursor = 'pointer';
       btn.style.transition = 'all 0.2s';
-      
+      btn.style.minHeight = '44px';
+
       btn.addEventListener('mouseenter', () => {
         btn.style.background = '#f0f0f0';
       });
-      
+
       btn.addEventListener('mouseleave', () => {
-        btn.style.background = 'white';
-      });
-      
-      btn.addEventListener('click', () => {
-        if (!this.quizAnswered) {
-          this.quizAnswered = true;
-          
-          if (index === this.data.quiz.correct) {
-            btn.style.background = '#4ECDC4';
-            btn.style.color = 'white';
-            btn.style.border = '2px solid #4ECDC4';
-            
-            setTimeout(() => {
-              if (this.onComplete) this.onComplete();
-            }, 1000);
-          } else {
-            btn.style.background = '#FF6B6B';
-            btn.style.color = 'white';
-            
-            setTimeout(() => {
-              btn.style.background = 'white';
-              btn.style.color = '#333';
-              this.quizAnswered = false;
-            }, 1000);
-          }
+        if (!btn.classList.contains('correct') && !btn.classList.contains('incorrect')) {
+          btn.style.background = 'white';
         }
       });
-      
+
+      btn.addEventListener('click', () => {
+        if (this.quizAnswered) return;
+        const result = this.session.answer(option.answerId);
+        if (result.correct) {
+          this.quizAnswered = true;
+          btn.classList.add('correct');
+          btn.style.background = '#4ECDC4';
+          btn.style.color = 'white';
+          btn.style.border = '2px solid #4ECDC4';
+          clearHint(feedback);
+          setTimeout(() => {
+            if (this.onComplete) this.onComplete();
+          }, 1000);
+          return;
+        }
+        btn.classList.add('incorrect');
+        btn.style.background = '#FF6B6B';
+        btn.style.color = 'white';
+        showWrongHint(feedback);
+        setTimeout(() => {
+          btn.classList.remove('incorrect');
+          btn.style.background = 'white';
+          btn.style.color = '#333';
+        }, 1000);
+      });
+
       options.appendChild(btn);
     });
-    
+
     quiz.appendChild(options);
+    const feedback = mountFeedback(quiz);
+    mountRetry(quiz, () => {
+      this.quizAnswered = false;
+      this.session.retry();
+      quiz.remove();
+      this.showQuiz(puzzleDiv);
+    });
     puzzleDiv.appendChild(quiz);
   }
 }

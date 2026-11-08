@@ -1,9 +1,10 @@
 import { band1 } from '../books/band1.js';
 import { band2 } from '../books/band2.js';
+import { band3 } from '../books/band3.js';
 import { renderBookshelf } from './bookshelf.js';
 import { BookReader } from './book-reader.js';
 
-const books = [band1, band2];
+const books = [band1, band2, band3];
 
 class App {
   constructor() {

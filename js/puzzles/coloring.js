@@ -67,7 +67,7 @@ export class ColoringPuzzle {
     palette.className = 'color-palette';
     palette.style.height = '100%';
     
-    this.data.colors.forEach(color => {
+    this.data.colors.forEach((color, index) => {
       const btn = document.createElement('button');
       btn.className = 'color-button';
       btn.style.width = '50px';
@@ -79,6 +79,9 @@ export class ColoringPuzzle {
       btn.style.transition = 'all 0.2s';
       btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
       
+      if (this.data.colorNames?.[index]) {
+        btn.setAttribute('aria-label', this.data.colorNames[index]);
+      }
       if (color === this.selectedColor) {
         btn.style.border = '4px solid #333';
         btn.style.transform = 'scale(1.1)';
@@ -109,6 +112,8 @@ export class ColoringPuzzle {
     doneBtn.style.border = 'none';
     doneBtn.style.borderRadius = '25px';
     doneBtn.style.cursor = 'pointer';
+    doneBtn.style.minHeight = '44px';
+    doneBtn.style.minWidth = '44px';
     doneBtn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
     doneBtn.style.transition = 'all 0.2s';
     

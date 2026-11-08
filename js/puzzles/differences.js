@@ -1,4 +1,5 @@
 import { bindArtRatio } from './art-frame.js';
+import { fixedHotspots } from '../choice-order.js';
 
 export class DifferencesPuzzle {
   constructor(data, container) {
@@ -41,7 +42,7 @@ export class DifferencesPuzzle {
     bindArtRatio(rightFrame, rightImgEl);
     rightImg.appendChild(rightFrame);
     
-    this.data.hotspots.forEach(diff => {
+    fixedHotspots(this.data.hotspots).forEach(diff => {
       const spot = document.createElement('div');
       spot.className = 'difference-spot';
       const radius = diff.r ?? diff.radius;
