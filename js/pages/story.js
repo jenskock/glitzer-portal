@@ -16,13 +16,7 @@ export function renderStoryPage(pageData, container, side) {
     const img = document.createElement('img');
     img.src = pageData.spreadImage;
     img.alt = 'Story illustration';
-    img.className = 'spread-image';
-    img.style.width = '200%';
-    img.style.height = '100%';
-    img.style.objectFit = 'cover';
-    img.style.display = 'block';
-    // Position image to show left or right half
-    img.style.marginLeft = side === 'left' ? '0' : '-100%';
+    img.className = side === 'left' ? 'spread-image spread-image--left' : 'spread-image spread-image--right';
     illustration.appendChild(img);
   }
   
