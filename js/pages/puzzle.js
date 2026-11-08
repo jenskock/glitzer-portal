@@ -7,8 +7,10 @@ import { QuizPuzzle } from '../puzzles/quiz.js';
 import { MemoryPuzzle } from '../puzzles/memory.js';
 import { ColoringPuzzle } from '../puzzles/coloring.js';
 import { WordImagePuzzle } from '../puzzles/word-image.js';
+import { createChoiceSession } from '../choice-order.js';
+import { clearHint, mountFeedback, mountRetry, showWrongHint } from '../choice-controls.js';
 
-export function renderPuzzlePage(pageData, leftContainer, rightContainer) {
+export function renderPuzzlePage(pageData, leftContainer, rightContainer, book = null, pageIndex = 0) {
   // Puzzle spans both pages
   leftContainer.className = 'page puzzle-page-left';
   if (rightContainer) {
@@ -47,35 +49,44 @@ export function renderPuzzlePage(pageData, leftContainer, rightContainer) {
     rightContainer.innerHTML = '';
   }
   
+  const context = {
+    bookId: book?.id || 'book',
+    puzzleKey: `${book?.id || 'book'}:page:${pageIndex}:${pageData.puzzleType}`,
+  };
+
   let puzzle;
   switch (pageData.puzzleType) {
     case 'search':
-      puzzle = new SearchPuzzle(pageData, content);
+      puzzle = new SearchPuzzle(pageData, content, context);
       break;
     case 'differences':
-      puzzle = new DifferencesPuzzle(pageData, content);
+      puzzle = new DifferencesPuzzle(pageData, content, context);
       break;
     case 'initial-sounds':
-      puzzle = new InitialSoundsPuzzle(pageData, content);
+      puzzle = new InitialSoundsPuzzle(pageData, content, context);
       break;
     case 'fact-cards':
-      puzzle = new FactCardsPuzzle(pageData, content);
+      puzzle = new FactCardsPuzzle(pageData, content, context);
       break;
     case 'maze':
-      puzzle = new MazePuzzle(pageData, content);
+      puzzle = new MazePuzzle(pageData, content, context);
       break;
     case 'quiz':
-      puzzle = new QuizPuzzle(pageData, content);
+      puzzle = new QuizPuzzle(pageData, content, context);
       break;
     case 'memory':
-      puzzle = new MemoryPuzzle(pageData, content);
+      puzzle = new MemoryPuzzle(pageData, content, context);
       break;
     case 'coloring':
-      puzzle = new ColoringPuzzle(pageData, content);
+      puzzle = new ColoringPuzzle(pageData, content, context);
       break;
     case 'word-image':
-      puzzle = new WordImagePuzzle(pageData, content);
+      puzzle = new WordImagePuzzle(pageData, content, context);
       break;
+    default: {
+      const unknown = pageData.puzzleType;
+      throw new Error(`Unbekanntes Spiel: ${unknown}`);
+    }
   }
   
   if (puzzle) {
@@ -87,7 +98,7 @@ export function renderPuzzlePage(pageData, leftContainer, rightContainer) {
       if (questions && questions.length > 0) {
         showComprehension(questions, puzzleWrapper, content, () => {
           showPraise(pageData.praise, puzzleWrapper);
-        });
+        }, context);
       } else {
         showPraise(pageData.praise, puzzleWrapper);
       }
@@ -109,8 +120,13 @@ function createHintToggle(content) {
   return button;
 }
 
-function showComprehension(questions, wrapper, content, onDone) {
-  let index = 0;
+function showComprehension(questions, wrapper, content, onDone, context) {
+  const session = createChoiceSession({
+    bookId: context.bookId,
+    puzzleKey: `${context.puzzleKey}:comprehension`,
+    rawQuestions: questions,
+    scope: `${context.puzzleKey}:comprehension`,
+  });
 
   wrapper.querySelectorAll('.comprehension-overlay').forEach((el) => el.remove());
 
@@ -125,13 +141,13 @@ function showComprehension(questions, wrapper, content, onDone) {
   function renderQuestion() {
     panel.innerHTML = '';
 
-    if (index >= questions.length) {
+    if (session.done) {
       overlay.remove();
       onDone();
       return;
     }
 
-    const q = questions[index];
+    const q = session.current();
 
     const label = document.createElement('div');
     label.className = 'comprehension-label';
@@ -140,28 +156,33 @@ function showComprehension(questions, wrapper, content, onDone) {
 
     const question = document.createElement('div');
     question.className = 'fact-quiz-question';
-    question.textContent = q.question;
+    question.textContent = q.prompt;
     panel.appendChild(question);
 
     const options = document.createElement('div');
     options.className = 'fact-quiz-options';
+    let locked = false;
 
-    q.options.forEach((optionText, optionIndex) => {
+    session.display().forEach((option) => {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'fact-quiz-option';
-      btn.textContent = optionText;
+      btn.dataset.answerId = option.answerId;
+      btn.textContent = option.label;
       btn.addEventListener('click', () => {
-        if (btn.disabled) return;
-        const correct = optionIndex === q.correct;
-        btn.classList.add(correct ? 'correct' : 'incorrect');
-        if (correct) {
+        if (locked || btn.disabled) return;
+        const result = session.answer(option.answerId);
+        btn.classList.add(result.correct ? 'correct' : 'incorrect');
+        if (result.correct) {
+          locked = true;
+          clearHint(feedback);
           options.querySelectorAll('button').forEach((b) => { b.disabled = true; });
           setTimeout(() => {
-            index += 1;
+            session.advance();
             renderQuestion();
           }, 700);
         } else {
+          showWrongHint(feedback);
           setTimeout(() => {
             btn.classList.remove('incorrect');
           }, 700);
@@ -171,6 +192,11 @@ function showComprehension(questions, wrapper, content, onDone) {
     });
 
     panel.appendChild(options);
+    const feedback = mountFeedback(panel);
+    mountRetry(panel, () => {
+      session.retry();
+      renderQuestion();
+    });
   }
 
   // Hide finished puzzle visuals while answering

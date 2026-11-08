@@ -1,4 +1,5 @@
 import { bindArtRatio } from './art-frame.js';
+import { traceFollowsRoute } from '../maze-route.js';
 
 export class MazePuzzle {
   constructor(data, container) {
@@ -68,15 +69,12 @@ export class MazePuzzle {
     const w = this.canvas.width;
     const h = this.canvas.height;
     
-    // Get meadow area from data
-    const meadow = this.data.meadow;
-    const cx = w * meadow.cx / 100;
-    const cy = h * meadow.cy / 100;
-    const rx = w * meadow.rx / 100;
-    const ry = h * meadow.ry / 100;
-    
-    // Draw correct path (from path_start_anchor to path_goal_anchor)
-    // Path crosses stream on stepping stones
+    // A route graph is traced on the painted plan. Older books draw a guide path.
+    if (this.data.route) {
+      this.drawMarkers();
+      return;
+    }
+
     const startX = w * this.data.pathStart.x / 100;
     const startY = h * this.data.pathStart.y / 100;
     const goalX = w * this.data.pathGoal.x / 100;
@@ -261,11 +259,44 @@ export class MazePuzzle {
     }
   }
 
-  checkSolution() {
-    if (this.path.length < 10) return false;
-    
+  drawMarkers() {
+    const ctx = this.ctx;
     const w = this.canvas.width;
     const h = this.canvas.height;
+    ctx.fillStyle = '#4ECDC4';
+    ctx.beginPath();
+    ctx.arc(w * this.data.start.x / 100, h * this.data.start.y / 100, 40, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 50px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('▶', w * this.data.start.x / 100, h * this.data.start.y / 100);
+
+    ctx.fillStyle = '#FFD700';
+    ctx.beginPath();
+    ctx.arc(w * this.data.goal.x / 100, h * this.data.goal.y / 100, 40, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.fillText('★', w * this.data.goal.x / 100, h * this.data.goal.y / 100);
+  }
+
+  checkSolution() {
+    if (this.path.length < 10) return false;
+
+    const w = this.canvas.width;
+    const h = this.canvas.height;
+    if (this.data.route) {
+      const points = this.path.map((point) => ({
+        x: (point.x / w) * 100,
+        y: (point.y / h) * 100,
+      }));
+      return traceFollowsRoute(points, this.data.route, this.data.deadEnds || [], {
+        waypointRadius: this.data.waypointRadius ?? 10,
+        deadRadius: this.data.deadRadius ?? 6,
+      });
+    }
+
     const goalX = w * this.data.goal.x / 100;
     const goalY = h * this.data.goal.y / 100;
     

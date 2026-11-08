@@ -1,15 +1,23 @@
+import { anlautCorrectIds, anlautSolved, ensureIdOrder } from '../choice-order.js';
+import { clearHint, mountFeedback, mountRetry, showWrongHint } from '../choice-controls.js';
+
 export class InitialSoundsPuzzle {
-  constructor(data, container) {
+  constructor(data, container, context = {}) {
     this.data = data;
     this.container = container;
+    this.bookId = context.bookId || 'book';
+    this.puzzleKey = context.puzzleKey || 'initial-sounds';
     this.completed = new Set();
     this.finished = false;
     this.onComplete = null;
-    
+    this.correctIds = anlautCorrectIds(data.items);
     this.render();
   }
 
   render() {
+    const shell = document.createElement('div');
+    shell.className = 'sounds-shell';
+
     const puzzleDiv = document.createElement('div');
     puzzleDiv.className = 'initial-sounds-puzzle';
     puzzleDiv.style.display = 'grid';
@@ -18,9 +26,20 @@ export class InitialSoundsPuzzle {
     puzzleDiv.style.height = '100%';
     puzzleDiv.style.minHeight = '0';
     
-    this.data.items.forEach(item => {
+    const items = ensureIdOrder({
+      bookId: this.bookId,
+      puzzleKey: this.puzzleKey,
+      listKey: 'anlaut',
+      items: this.data.items,
+      idOf: (item) => item.id,
+    });
+
+    items.forEach(item => {
       const itemEl = document.createElement('div');
       itemEl.className = 'sound-item';
+      itemEl.dataset.objectId = item.id;
+      itemEl.setAttribute('role', 'button');
+      itemEl.tabIndex = 0;
       itemEl.style.cursor = 'pointer';
       itemEl.style.borderRadius = '15px';
       itemEl.style.overflow = 'hidden';
@@ -76,12 +95,13 @@ export class InitialSoundsPuzzle {
             itemEl.style.opacity = '0.5';
           }
           
-          const correctCount = this.data.items.filter(i => i.correct).length;
-          const foundCorrect = this.data.items.filter(i => 
-            i.correct && this.completed.has(i.id)
-          ).length;
-          
-          if (foundCorrect === correctCount && !this.finished) {
+          if (item.correct) {
+            clearHint(this.feedback);
+          } else {
+            showWrongHint(this.feedback);
+          }
+
+          if (anlautSolved(this.correctIds, [...this.completed]) && !this.finished) {
             this.finished = true;
             setTimeout(() => {
               if (this.onComplete) this.onComplete();
@@ -92,7 +112,24 @@ export class InitialSoundsPuzzle {
       
       puzzleDiv.appendChild(itemEl);
     });
-    
-    this.container.appendChild(puzzleDiv);
+
+    shell.appendChild(puzzleDiv);
+    this.feedback = mountFeedback(shell);
+    mountRetry(shell, () => {
+      this.completed = new Set();
+      this.finished = false;
+      ensureIdOrder({
+        bookId: this.bookId,
+        puzzleKey: this.puzzleKey,
+        listKey: 'anlaut',
+        items: this.data.items,
+        idOf: (item) => item.id,
+        fresh: true,
+      });
+      this.container.innerHTML = '';
+      this.render();
+    });
+
+    this.container.appendChild(shell);
   }
 }

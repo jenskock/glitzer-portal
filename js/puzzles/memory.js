@@ -1,7 +1,12 @@
+import { ensureIdOrder, isMemoryMatch, memoryDeck } from '../choice-order.js';
+import { mountRetry } from '../choice-controls.js';
+
 export class MemoryPuzzle {
-  constructor(data, container) {
+  constructor(data, container, context = {}) {
     this.data = data;
     this.container = container;
+    this.bookId = context.bookId || 'book';
+    this.puzzleKey = context.puzzleKey || 'memory';
     this.flipped = [];
     this.matched = new Set();
     this.onComplete = null;
@@ -10,24 +15,26 @@ export class MemoryPuzzle {
   }
 
   render() {
+    const shell = document.createElement('div');
+    shell.className = 'memory-shell';
+
     const puzzleDiv = document.createElement('div');
     puzzleDiv.className = 'memory-puzzle';
 
-    const cards = this.data.pairs.flatMap((pair) => [
-      { ...pair, pairId: pair.id },
-      { ...pair, pairId: pair.id },
-    ]);
-
-    for (let i = cards.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [cards[i], cards[j]] = [cards[j], cards[i]];
-    }
+    const cards = ensureIdOrder({
+      bookId: this.bookId,
+      puzzleKey: this.puzzleKey,
+      listKey: 'memory-deck',
+      items: memoryDeck(this.data.pairs),
+      idOf: (card) => card.cardId,
+    });
 
     cards.forEach((card) => {
       const cardEl = document.createElement('button');
       cardEl.type = 'button';
       cardEl.className = 'memory-card';
       cardEl.dataset.pairId = card.pairId;
+      cardEl.dataset.cardId = card.cardId;
       cardEl.setAttribute('aria-label', 'Verdeckte Karte');
 
       const back = document.createElement('span');
@@ -49,7 +56,23 @@ export class MemoryPuzzle {
       puzzleDiv.appendChild(cardEl);
     });
 
-    this.container.appendChild(puzzleDiv);
+    shell.appendChild(puzzleDiv);
+    mountRetry(shell, () => {
+      this.flipped = [];
+      this.matched = new Set();
+      ensureIdOrder({
+        bookId: this.bookId,
+        puzzleKey: this.puzzleKey,
+        listKey: 'memory-deck',
+        items: memoryDeck(this.data.pairs),
+        idOf: (card) => card.cardId,
+        fresh: true,
+      });
+      this.container.innerHTML = '';
+      this.render();
+    });
+
+    this.container.appendChild(shell);
   }
 
   flip(cardEl, card) {
@@ -68,7 +91,9 @@ export class MemoryPuzzle {
     if (this.flipped.length < 2) return;
 
     const [first, second] = this.flipped;
-    if (first.dataset.pairId === second.dataset.pairId) {
+    const firstCard = { pairId: first.dataset.pairId, cardId: first.dataset.cardId };
+    const secondCard = { pairId: second.dataset.pairId, cardId: second.dataset.cardId };
+    if (isMemoryMatch(firstCard, secondCard)) {
       this.matched.add(first.dataset.pairId);
       first.classList.add('matched');
       second.classList.add('matched');

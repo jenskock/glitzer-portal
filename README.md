@@ -1,6 +1,6 @@
 # Das Glitzer-Portal
 
-Interactive children's book for readers aged 6–7. Band 1, *Das Rätsel des leuchtenden Steins*, is ten story spreads and ten touch puzzles. Reading progress is stored in the browser.
+Interactive children's book for readers aged 6–7. Band 1 is *Das Rätsel des leuchtenden Steins*, Band 2 is *Bruno kommt zu Besuch*, and Band 3 is *Die Spur im Schilf*. Each later volume has 16 story spreads and 16 touch puzzles. Reading progress is stored in the browser.
 
 Live: https://jenskock.github.io/glitzer-portal/
 

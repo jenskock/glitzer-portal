@@ -36,7 +36,34 @@ async function openBand2At(page, pageIndex) {
   await page.waitForTimeout(400);
 }
 
-async function answerComprehension(page) {
+function optionLabel(option) {
+  return typeof option === 'string' ? option : (option.text || option.name || option.label || '');
+}
+
+function correctLabel(question) {
+  if (!question) return '';
+  if (question.correctAnswerId) {
+    const match = question.options.find((option) => (option.answerId || option.id) === question.correctAnswerId);
+    return optionLabel(match);
+  }
+  if (typeof question.correct === 'number') return optionLabel(question.options[question.correct]);
+  return optionLabel(question.options.find((option) => option && option.correct));
+}
+
+async function clickExact(scope, label) {
+  const buttons = scope.locator('button.fact-quiz-option, .quiz-option, .word-image-option');
+  const count = await buttons.count();
+  for (let i = 0; i < count; i += 1) {
+    const text = (await buttons.nth(i).innerText()).replace(/\s+/g, ' ').trim();
+    if (text === label.trim()) {
+      await buttons.nth(i).click({ force: true });
+      return;
+    }
+  }
+  throw new Error(`Option nicht gefunden: ${label}`);
+}
+
+async function answerComprehension(page, puzzle) {
   const overlay = page.locator('.comprehension-overlay');
   try {
     await overlay.waitFor({ state: 'visible', timeout: 3000 });
@@ -44,14 +71,14 @@ async function answerComprehension(page) {
     return;
   }
 
-  for (let i = 0; i < 6; i++) {
+  const questions = puzzle?.comprehension || [];
+  for (let i = 0; i < questions.length; i += 1) {
     if (await page.locator('.praise-message').count()) return;
     if (!(await overlay.count())) return;
 
-    const question = await overlay.locator('.fact-quiz-question').first().textContent();
-    const btn = overlay.locator('button.fact-quiz-option:not([disabled])').first();
-    await btn.waitFor({ state: 'visible', timeout: 3000 });
-    await btn.click({ force: true });
+    const question = ((await overlay.locator('.fact-quiz-question').first().textContent()) || '').trim();
+    const match = questions.find((item) => (item.question || item.word) === question) || questions[i];
+    await clickExact(overlay, correctLabel(match));
 
     await page.waitForFunction(
       (prev) => {
@@ -69,32 +96,32 @@ async function answerComprehension(page) {
   }
 }
 
-async function expectPraise(page) {
-  await answerComprehension(page);
+async function expectPraise(page, puzzle) {
+  await answerComprehension(page, puzzle);
   await page.waitForSelector('.praise-message.show', { timeout: 10000 });
 }
 
-async function solveSearch(page) {
+async function solveSearch(page, puzzle) {
   const spots = page.locator('.search-item');
   const n = await spots.count();
   for (let i = 0; i < n; i++) {
     await spots.nth(i).click({ force: true });
     await page.waitForTimeout(100);
   }
-  await expectPraise(page);
+  await expectPraise(page, puzzle);
 }
 
-async function solveDifferences(page) {
+async function solveDifferences(page, puzzle) {
   const spots = page.locator('.difference-spot');
   const n = await spots.count();
   for (let i = 0; i < n; i++) {
     await spots.nth(i).click({ force: true });
     await page.waitForTimeout(100);
   }
-  await expectPraise(page);
+  await expectPraise(page, puzzle);
 }
 
-async function solveInitialSounds(page) {
+async function solveInitialSounds(page, puzzle) {
   // Click all correct items (border turns teal). Also click wrong ones ok.
   const items = page.locator('.sound-item');
   const n = await items.count();
@@ -102,10 +129,10 @@ async function solveInitialSounds(page) {
     await items.nth(i).click();
     await page.waitForTimeout(80);
   }
-  await expectPraise(page);
+  await expectPraise(page, puzzle);
 }
 
-async function solveFactCards(page) {
+async function solveFactCards(page, puzzle) {
   const cards = page.locator('.fact-card');
   const n = await cards.count();
   for (let i = 0; i < n; i++) {
@@ -115,39 +142,30 @@ async function solveFactCards(page) {
   // Mini-quiz appears after a short delay once all cards are open
   const quizOpt = page.locator('.fact-cards-puzzle .fact-quiz-option').first();
   await quizOpt.waitFor({ state: 'visible', timeout: 5000 });
-  await quizOpt.click();
+  await clickExact(page.locator('.fact-cards-puzzle'), correctLabel(puzzle.quiz));
   await page.waitForTimeout(1100);
-  await expectPraise(page);
+  await expectPraise(page, puzzle);
 }
 
-async function solveQuiz(page) {
-  for (let q = 0; q < 10; q++) {
-    if (await page.locator('.praise-message.show, .comprehension-overlay').count()) break;
-    const question = await page.locator('.quiz-question').textContent().catch(() => null);
-    if (!question) break;
+async function waitForNextPrompt(page, selector, previous) {
+  await page.waitForFunction(({ selector: promptSelector, previous: previousText }) => {
+    if (document.querySelector('.praise-message.show')) return true;
+    const node = document.querySelector(promptSelector);
+    return !node || node.textContent !== previousText;
+  }, { selector, previous }, { timeout: 4000 });
+}
 
-    // Click options until the question text changes or praise appears
-    const count = await page.locator('.quiz-option').count();
-    let moved = false;
-    for (let i = 0; i < count; i++) {
-      await page.locator('.quiz-option').nth(i).click();
-      await page.waitForTimeout(1100);
-      if (await page.locator('.praise-message.show, .comprehension-overlay').count()) {
-        moved = true;
-        break;
-      }
-      const next = await page.locator('.quiz-question').textContent().catch(() => '');
-      if (next && next !== question) {
-        moved = true;
-        break;
-      }
-    }
-    if (!moved) break;
+async function solveQuiz(page, puzzle) {
+  for (const question of puzzle.questions) {
+    if (await page.locator('.praise-message.show').count()) break;
+    const before = await page.locator('.quiz-question').textContent();
+    await clickExact(page.locator('.quiz-puzzle'), correctLabel(question));
+    await waitForNextPrompt(page, '.quiz-question', before);
   }
-  await expectPraise(page);
+  await expectPraise(page, puzzle);
 }
 
-async function solveMaze(page) {
+async function solveMaze(page, puzzle) {
   const canvas = page.locator('.maze-canvas');
   await canvas.waitFor({ state: 'visible' });
   const box = await canvas.boundingBox();
@@ -168,10 +186,10 @@ async function solveMaze(page) {
     await page.mouse.move(startX + (goalX - startX) * t, startY + (goalY - startY) * t);
   }
   await page.mouse.up();
-  await expectPraise(page);
+  await expectPraise(page, puzzle);
 }
 
-async function solveMemory(page) {
+async function solveMemory(page, puzzle) {
   const cards = page.locator('.memory-card');
   await cards.first().waitFor();
 
@@ -194,38 +212,23 @@ async function solveMemory(page) {
     await page.waitForTimeout(400);
     seen.delete(id);
   }
-  await expectPraise(page);
+  await expectPraise(page, puzzle);
 }
 
-async function solveWordImage(page) {
-  for (let round = 0; round < 8; round++) {
-    if (await page.locator('.praise-message.show, .comprehension-overlay').count()) break;
-    const word = await page.locator('.word-to-match').textContent().catch(() => null);
-    if (!word) break;
-    const options = page.locator('.word-image-option');
-    const count = await options.count();
-    let moved = false;
-    for (let i = 0; i < count; i++) {
-      await options.nth(i).click();
-      await page.waitForTimeout(1100);
-      if (await page.locator('.praise-message.show, .comprehension-overlay').count()) {
-        moved = true;
-        break;
-      }
-      const next = await page.locator('.word-to-match').textContent().catch(() => '');
-      if (next && next !== word) {
-        moved = true;
-        break;
-      }
-    }
-    if (!moved) break;
+async function solveWordImage(page, puzzle) {
+  for (const round of puzzle.rounds) {
+    if (await page.locator('.praise-message.show').count()) break;
+    const correct = round.options.find((option) => option.correct);
+    const before = await page.locator('.word-to-match').textContent();
+    await page.locator(`.word-image-option[data-answer-id="${correct.id}"]`).click();
+    await waitForNextPrompt(page, '.word-to-match', before);
   }
-  await expectPraise(page);
+  await expectPraise(page, puzzle);
 }
 
-async function solveColoring(page) {
+async function solveColoring(page, puzzle) {
   await page.locator('.done-button').click();
-  await expectPraise(page);
+  await expectPraise(page, puzzle);
 }
 
 const solvers = {
@@ -259,7 +262,7 @@ async function main() {
       }
       const solver = solvers[puzzle.puzzleType];
       if (!solver) throw new Error(`No solver for ${puzzle.puzzleType}`);
-      await solver(page);
+      await solver(page, puzzle);
       results.push({ name, ok: true });
       console.log(`PASS ${name}`);
     } catch (err) {
